@@ -2064,6 +2064,12 @@ VIEWS.board = () => {
     $('#bempty').hidden = L.length > 0;
     $('#binfo').textContent = Board.live ? `${SALA !== 'principal' ? 'Sala ' + SALA + ' · ' : ''}Empate em pontos fica com quem terminou mais rápido · atualizado às ${new Date().toLocaleTimeString('pt-BR')}` : 'Modo local: mostra só as partidas deste aparelho. Configure o Firebase para juntar todos.';
   }, {stream: true, every: 3000});
+  /* Quando o telão está embutido num slide, a apresentação manda revelar ou fechar o pódio */
+  window.addEventListener('message', e => {
+    const c = e.data && e.data.mp;
+    if (c === 'reveal' && !document.querySelector('.reveal')) $('#reveal').click();
+    else if (c === 'hide'){ const r = document.querySelector('.reveal'); if (r) r.remove(); }
+  });
   $('#reveal').onclick = () => {
     const d = document.createElement('div'); d.className = 'reveal';
     let conf = '';
