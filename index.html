@@ -933,9 +933,10 @@ const CHAT = [
 const ENDINGS = {
   match:{say:['Aceito o convite! Inscrição confirmada, nos vemos no Congresso 💙'], rsvp:'✅ Helena confirmou presença', sys:'📅 O Congresso aconteceu · credenciamento feito · pesquisa de satisfação enviada',
          /* conversa depois do evento: cada item é uma troca (Helena fala, a área responde tocando no botão) */
-         talk:[{after:['Já respondi a pesquisa de satisfação, aliás 📝', 'Já estou ansiosa para os próximos eventos! 🚀'],
-                reply:'Eu também! Já estou fazendo o balanço: o relatório vai me ajudar a planejar o próximo encontro 😉'},
-               {after:['Ah, e preciso dizer: amei o evento! 😍', 'Quero saber mais sobre o conteúdo. Vocês têm material para eu me aprofundar?'],
+         /* um passo por mensagem: avaliação do evento → relatório → pedido de conteúdo → cadastro */
+         talk:[{after:['Que evento! 😍 Já respondi a pesquisa de satisfação e dei nota máxima 📝'],
+                reply:'Que bom! Suas respostas vão para o relatório do evento, e é com ele que a gente planeja o próximo encontro 😉'},
+               {after:['Saí de lá com vontade de me aprofundar em inovação.', 'Vocês têm material para eu continuar estudando?'],
                 /* 4 alternativas (não valem ponto: a Helena já decidiu ir). Errou? Ela reage e as opções restantes voltam. */
                 opts:[['Temos, sim! São publicações e estudos sobre inovação. Você pode se cadastrar para recebê-los por e-mail ou acessar a página de publicações do Portal da Indústria 📚', []],
                       ['Te mando agora todos os nossos PDFs, de todos os temas. Uns 300, mais ou menos!', ['300 PDFs?! Eu só pedi inovação 😅 Tem algo mais certeiro?']],
@@ -943,7 +944,7 @@ const ENDINGS = {
                       ['Te coloco em todas as nossas listas de e-mail, inclusive a de receitas!', ['Receitas?! 😂 Quero só conteúdo de inovação, por favor.']]],
                 c:0, ord:[2,0,3,1],
                 sys:'📚 Links enviados: cadastro para receber por e-mail e página de publicações do Portal da Indústria',
-                last:['Oba! Já vou me cadastrar para receber por e-mail 🤓', 'Combinado. Até o próximo match 💙']}]},
+                last:['Perfeito, já vou me cadastrar 🤓', 'Isso, sim, é relacionamento sério. Até o próximo match 💙']}]},
   quase:{say:['Recebi seu convite com carinho… mas acho melhor a gente não sair agora.', 'Quem sabe em outra oportunidade? 🙂'], rsvp:'✉️ Convite recusado · fica para uma próxima'},
   ghost:{rsvp:'👻 Helena visualizou e não respondeu', sys:'❌ Sem confirmação de presença: ela não vai ao evento', status:'visto por último agora'}
 };
