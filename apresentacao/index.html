@@ -1400,6 +1400,15 @@ body.autoplay #auto{display:block}
 
 /* QR em vetor */
 .qrbox .qrsvg{width:590px;height:590px;display:block;margin-bottom:18px}
+
+/* Regras do jogo: alerta de Game Over */
+.tt-alert{position:absolute;left:890px;right:130px;top:858px;display:flex;align-items:center;gap:24px;padding:20px 30px;border-radius:28px;background:linear-gradient(135deg,#ff5c72,#d9304a);color:#fff;box-shadow:0 30px 60px -30px rgba(160,20,50,.85)}
+.tt-alert .ai{flex:none;width:78px;height:78px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:42px;line-height:1}
+.tt-alert b{display:block;font:800 32px/1.1 var(--display);letter-spacing:-.01em;margin-bottom:6px}
+.tt-alert span{font:600 23px/1.35 var(--body)}
+.tt-alert em{font-style:normal;font-weight:800;color:#ffe27a}
+.tt-alert.on .ai{animation:alertPulse 1.6s ease-in-out .9s infinite}
+@keyframes alertPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
 </style>
 </head>
 <body>
@@ -2100,16 +2109,15 @@ body.autoplay #auto{display:block}
     <div class="g-left stack" style="gap:30px">
       <div class="kicker">Teste de compatibilidade</div>
       <h1 style="font-size:92px">Você dá match com o CRM?</h1>
-      <p class="lead" style="font-size:32px">Agora é a sua vez. Pegue o celular e jogue como num aplicativo de relacionamento:</p>
-      <div class="vote2"><div class="y"><svg class="i"><use href="#heart"/></svg>direita: dá match</div><div class="n"><svg class="i"><use href="#x"/></svg>esquerda: não dá</div></div>
+      <p class="lead" style="font-size:36px">A Carla encontrou o Roberto. Será que você também encontra as pessoas certas?</p>
       <div class="nexthint" data-step="4">A seguir: as regras do jogo <svg class="i"><use href="#chev"/></svg></div>
     </div>
     <div class="gdeck" id="gdeck"></div>
     <div class="gwhy" id="gwhy"></div>
     <div class="notes">
-      <p class="cue">Demonstração por clique: revela a primeira situação, passa para a segunda, revela a segunda e, por fim, mostra o aviso do QR Code.</p>
-      <p>"Se a compatibilidade é de 100%, que tal colocar isso à prova? Agora é a vez de vocês. Preparamos um teste de compatibilidade no estilo dos aplicativos de relacionamento: vocês vão ver algumas situações do dia a dia com o CRM e decidir se dá match ou não."</p>
-      <p>"Cada situação é uma das dicas que apareceram na história da Carla. Deslizou para a direita, dá match. Para a esquerda, não dá. Na próxima tela, as regras do jogo."</p>
+      <p class="cue">Demonstração por clique: revela a primeira situação, passa para a segunda, revela a segunda e, por fim, mostra o aviso das regras. Ainda não peça o celular: o acesso é no slide do QR Code.</p>
+      <p>"Se a compatibilidade é de 100%, que tal colocar isso à prova? A Carla encontrou o Roberto. Será que vocês também encontram as pessoas certas?"</p>
+      <p>"Ao lado, algumas situações do dia a dia com o CRM: dá match ou não? Cada uma é uma das dicas da história da Carla. Na próxima tela, as regras do jogo."</p>
     </div>
   </section>
 
@@ -2153,13 +2161,18 @@ body.autoplay #auto{display:block}
       <div class="wt"><b>Ganham as 3 pessoas que acertarem mais e mais rápido.</b>
         <div class="wc"><span><svg class="i"><use href="#check"/></svg>mais acertos</span><span><svg class="i"><use href="#timer"/></svg>menos tempo</span></div></div>
     </div>
+    <div class="tt-alert" data-step="6" data-a="pop">
+      <span class="ai" aria-hidden="true">💔</span>
+      <div><b>Atenção: perfil imperdível!</b><span>Na etapa Match, existe um perfil altamente qualificado que não pode ser deixado passar. Se deixar, é <em>Game Over</em>.</span></div>
+    </div>
     <div class="notes">
-      <p class="cue">Clique 1: como acessar. Cliques 2, 3 e 4: cada etapa entra como um perfil deslizando, e os itens dela ganham vida (o perfil e os filtros, o like, a conversa com a resposta certa escolhida). Clique 5: quem ganha.</p>
+      <p class="cue">Clique 1: como acessar. Cliques 2, 3 e 4: cada etapa entra como um perfil deslizando, e os itens dela ganham vida (o perfil e os filtros, o like, a conversa com a resposta certa escolhida). Clique 5: quem ganha. Clique 6: o alerta de Game Over.</p>
       <p>"Antes de jogar, as regras. Vocês vão ler o QR Code e jogar direto pelo celular. A dinâmica dura, em média, três minutos."</p>
       <p>"Primeira etapa, o perfil: vocês criam o seu perfil e filtram as informações de acordo com o objetivo do evento."</p>
       <p>"Segunda etapa, o match: leiam as descrições e deem like nos perfis que mais combinam com o evento."</p>
       <p>"Terceira etapa, a conversa: vocês conversam com um dos seus matches e escolhem a resposta certa entre quatro opções para convencê-lo a comparecer ao evento."</p>
-      <p>"Ganham as três pessoas que acertarem mais e mais rápido. Prontos? Na próxima tela está o QR Code."</p>
+      <p>"Ganham as três pessoas que acertarem mais e mais rápido."</p>
+      <p>"E atenção: na etapa do match existe um perfil altamente qualificado que vocês não podem deixar passar. Se deixarem, é game over! Prontos? Na próxima tela está o QR Code."</p>
     </div>
   </section>
 
