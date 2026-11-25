@@ -1421,7 +1421,7 @@ VIEWS.splash = () => {
                    : `<button class="btn primary" id="start">Começar</button>`}
       <p class="fine">Leva uns 5 minutos. Sem login, sem cadastro, só critério.</p>
     </div></section>`;
-  $('#start').onclick = () => { S = fresh(); saved = null; S.draft = {nome: ME ? ME.nome : ''}; go('nome'); };
+  $('#start').onclick = () => { S = fresh(); saved = null; S.draft = {nome: ''}; go('nome'); };
   const r = $('#resume'); if (r) r.onclick = () => { S = saved; saved = null; render(); };
 };
 
@@ -1953,13 +1953,13 @@ refreshRodada();
 
 /* ---------------- Nome para o ranking ---------------- */
 VIEWS.nome = () => {
-  const D = S.draft || (S.draft = {nome: ME ? ME.nome : ''});
+  const D = S.draft || (S.draft = {nome: ''}); /* campo sempre começa vazio */
   app.innerHTML = `<section class="screen ob">
     <div class="obhead"><button class="back" id="back" aria-label="Voltar">${ico('arrowL', 22, 3.8)}</button></div>
     <div class="scroll">
       <span class="eyebrow">Antes de começar</span>
       <h1 class="obq">Qual é o seu nome?</h1>
-      <label class="field" for="nm"><span>Nome</span><input id="nm" maxlength="20" autocomplete="name" enterkeyhint="go" placeholder="Ex.: Ana Souza" value="${esc(D.nome)}"></label>
+      <label class="field" for="nm"><span>Nome</span><input id="nm" maxlength="20" autocomplete="off" enterkeyhint="go" placeholder="Ex.: Ana Souza" value="${esc(D.nome)}"></label>
       <p class="help">${ico('trophy', 15, 3.6)} Serve só para mostrar no ranking quem fez mais pontos e quem terminou mais rápido.</p>
     </div>
     <div class="foot"><button class="btn primary" id="ok" ${D.nome.trim().length >= 2 ? '' : 'disabled'}>Continuar</button></div></section>`;
