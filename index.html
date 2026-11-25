@@ -293,7 +293,18 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
 .mc-faces>span:last-child{margin-left:-12px}
 .matchcard b{font:800 15.5px/1.25 var(--f-display);color:var(--ink)}
 .matchcard small{font:600 12.5px/1.4 var(--f-body);color:var(--muted)}
+/* Fim de jogo: deixou a Helena passar */
+.gameover{background:radial-gradient(130% 80% at 50% 25%,#7A3E86 0%,#3A1F6B 52%,#150B33 100%)}
+.lostface{position:relative;margin:6px 0 4px;animation:goDrop .7s cubic-bezier(.2,.8,.2,1) both}
+.lostface .face{width:132px;height:132px;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 12px 30px rgba(0,0,0,.35);filter:grayscale(.85) brightness(.9)}
+.lostface .face svg{width:100%;height:100%;display:block}
+.lostface .broken{position:absolute;right:-12px;bottom:-6px;width:56px;height:56px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:30px;box-shadow:0 8px 18px rgba(0,0,0,.3);animation:goCrack .6s .5s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes goDrop{from{opacity:0;transform:translateY(-30px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes goCrack{0%{opacity:0;transform:scale(.2) rotate(-25deg)}100%{opacity:1;transform:none}}
+.gameover .bigscript{color:#FFD9DF}
+.warnline{margin:0;padding:11px 14px;border-radius:14px;background:#FFE9EC;color:#A3203A;font:800 14px/1.4 var(--f-body);text-align:left}
 @media (max-height:640px){
+  .lostface .face{width:104px;height:104px}
   .mission3 span{font-size:12.5px}.peek{display:none}
   .info{padding-top:70px}.bio{-webkit-line-clamp:3}.info h3{font-size:24px}
   .act{width:60px;height:60px}.actions{padding-top:10px}
@@ -416,21 +427,38 @@ body.wide #app{max-width:none;width:100%;height:100%;margin:0;border-radius:0;bo
 .bstats span{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:99px;background:rgba(255,255,255,.12);font:800 clamp(13px,1.05vw,18px)/1 var(--f-body);font-variant-numeric:tabular-nums}
 .bstats .live.big{background:#16C47F;color:#04331F;letter-spacing:.08em}
 .bstats .live.big .livedot{background:#04331F}
-.bmain{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(240px,.66fr);gap:clamp(14px,2vw,30px)}
+.bmain{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(230px,.58fr);gap:clamp(14px,2vw,30px)}
 .bpod{display:flex;flex-direction:column;min-height:0}
 .bpod h2{display:flex;align-items:center;gap:10px;font-size:clamp(20px,1.9vw,32px);color:#FFE7A8}
-.podium{flex:1;display:flex;align-items:flex-end;justify-content:center;gap:clamp(8px,1vw,18px)}
-.pod{display:flex;flex-direction:column;align-items:center;gap:6px;width:31%;min-width:0;text-align:center}
-.pod .pf{position:relative;width:clamp(70px,7.4vw,130px);aspect-ratio:1;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,.3);background:#BFE6F0}
-.pod.p1 .pf{width:clamp(90px,9.6vw,170px);border-color:#FFD36E;box-shadow:0 0 0 6px rgba(255,211,110,.25),0 12px 34px rgba(0,0,0,.35)}
+.podium{position:relative;flex:1;display:flex;align-items:flex-end;justify-content:center;gap:clamp(8px,1vw,18px)}
+.podium::before{content:"";position:absolute;left:50%;bottom:18%;width:78%;aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(circle,rgba(255,211,110,.32) 0%,rgba(255,211,110,.08) 45%,transparent 68%);pointer-events:none}
+.pod{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;width:31%;min-width:0;text-align:center}
+.pod .pfw{position:relative}
+.pod .pmedal{position:absolute;right:-4px;bottom:-4px;font-size:clamp(26px,2.4vw,42px);line-height:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35))}
+.pod .crown{font-size:clamp(34px,3.4vw,60px);line-height:1;margin-bottom:-8px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.35));animation:crownB 2.4s ease-in-out infinite}
+@keyframes crownB{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-6px) rotate(4deg)}}
+.pod .pf{position:relative;display:block;width:clamp(80px,8.6vw,150px);aspect-ratio:1;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,.3);background:#BFE6F0}
+.pod.p1 .pf{width:clamp(110px,11.6vw,210px);border-color:#FFD36E;box-shadow:0 0 0 6px rgba(255,211,110,.25),0 12px 34px rgba(0,0,0,.35)}
 .pod .pf.empty{display:grid;place-items:center;background:rgba(255,255,255,.12);border-style:dashed;color:rgba(255,255,255,.6);font:800 clamp(28px,3vw,48px)/1 var(--f-display)}
-.pod b{max-width:100%;font:800 clamp(14px,1.25vw,22px)/1.2 var(--f-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pod .pp{font:800 clamp(13px,1.1vw,19px)/1.1 var(--f-display);color:#9FF0FA;font-variant-numeric:tabular-nums}
+.pod b{max-width:100%;font:800 clamp(16px,1.5vw,27px)/1.2 var(--f-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pod .pp{font:800 clamp(14px,1.25vw,22px)/1.1 var(--f-display);color:#9FF0FA;font-variant-numeric:tabular-nums}
 .pod .step{width:100%;margin-top:6px;border-radius:16px 16px 0 0;display:flex;justify-content:center;padding-top:10px;font:800 clamp(26px,2.8vw,50px)/1 var(--f-display);background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,.06))}
-.pod.p1 .step{height:clamp(110px,17vh,230px);background:linear-gradient(180deg,#FFD36E,#E9A92A);color:#5A3E00}
-.pod.p2 .step{height:clamp(80px,12vh,170px)}
-.pod.p3 .step{height:clamp(60px,8.5vh,125px)}
-.blist{position:relative;min-height:0;overflow:hidden}
+.pod.p1 .step{height:clamp(140px,29vh,340px);background:linear-gradient(180deg,#FFD36E,#E9A92A);color:#5A3E00;box-shadow:0 0 40px rgba(255,211,110,.35)}
+.pod.p2 .step{height:clamp(100px,20.5vh,245px);background:linear-gradient(180deg,#EEF3F8,#AFBCCD);color:#2B3A55}
+.pod.p3 .step{height:clamp(75px,14.5vh,175px);background:linear-gradient(180deg,#F4BE8F,#C47A42);color:#4A2508}
+.bcol{display:flex;flex-direction:column;min-height:0;gap:clamp(8px,1vw,14px)}
+.bcol h2{display:flex;align-items:baseline;gap:10px;font-size:clamp(17px,1.45vw,25px);color:#fff}
+.bcol h2 small{font:700 clamp(12px,.95vw,16px)/1 var(--f-body);color:rgba(255,255,255,.7)}
+.blist{position:relative;flex:1;min-height:0;overflow:hidden}
+.blist.rolling{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 40px),transparent)}
+.board .lrow.t1{background:linear-gradient(90deg,rgba(255,211,110,.42),rgba(255,211,110,.1));border-color:rgba(255,211,110,.75)}
+.board .lrow.t2{background:linear-gradient(90deg,rgba(220,230,242,.36),rgba(255,255,255,.08));border-color:rgba(220,230,242,.6)}
+.board .lrow.t3{background:linear-gradient(90deg,rgba(232,150,90,.4),rgba(255,255,255,.08));border-color:rgba(232,150,90,.6)}
+.board .blist.compact .rface{width:clamp(28px,2.2vw,36px);height:clamp(28px,2.2vw,36px)}
+.board .blist.compact .rname b{font-size:clamp(14px,1.05vw,18px)}
+.board .blist.compact .rname small{font-size:clamp(10px,.75vw,13px)}
+.board .blist.compact .rpts{font-size:clamp(15px,1.2vw,21px)}
+.lrow.t1{background:#FFF6DA;border-color:#F2C94C}.lrow.t2{background:#F1F5FA;border-color:#C9D5E3}.lrow.t3{background:#FBEDE2;border-color:#E6B48C}
 .board .lrow{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);color:#fff;padding-right:18px}
 .board .pos{color:#9FF0FA;font-size:clamp(17px,1.4vw,24px);width:44px}
 .board .rface{width:clamp(36px,3.2vw,52px);height:clamp(36px,3.2vw,52px)}
@@ -1316,7 +1344,7 @@ const validRecs = data => Object.entries(data || {})
   .map(([id, r]) => Object.assign({id}, r));
 /* Pontuação: mais pontos primeiro; empate fica com quem terminou em menos tempo */
 const rankedList = data => validRecs(data)
-  .sort((a, b) => b.pts - a.pts || (a.etapa === 'fim' ? 0 : 1) - (b.etapa === 'fim' ? 0 : 1) || (a.t || 0) - (b.t || 0));
+  .sort((a, b) => (a.lost ? 1 : 0) - (b.lost ? 1 : 0) || b.pts - a.pts || (a.etapa === 'fim' ? 0 : 1) - (b.etapa === 'fim' ? 0 : 1) || (a.t || 0) - (b.t || 0));
 /* Mais rápidos: só quem terminou com pelo menos 70% de acertos, menor tempo primeiro */
 const fastList = data => validRecs(data)
   .filter(r => r.etapa === 'fim' && (r.acertos || 0) >= MIN_FAST)
@@ -1337,31 +1365,34 @@ function listUpdater(container, {rowH = 64, skip = 0, max = 50, meId = null, mod
   const rows = new Map();
   return list => {
     const shown = list.slice(skip, skip + max), seen = new Set();
+    const rh = typeof rowH === 'function' ? rowH(shown.length) : rowH;
     shown.forEach((r, i) => {
       let el = rows.get(r.id);
       if (!el){
         el = document.createElement('div');
         el.className = 'lrow' + (r.id === meId ? ' me' : '');
-        el.style.height = (rowH - 8) + 'px';
-        el.style.transform = `translateY(${i * rowH + 12}px)`; el.style.opacity = '0';
+        el.style.transform = `translateY(${i * rh + 12}px)`; el.style.opacity = '0';
         el.innerHTML = `<span class="pos"></span><span class="rface"></span><span class="rbody"></span>`;
         container.appendChild(el); rows.set(r.id, el);
         requestAnimationFrame(() => { el.style.opacity = '1'; });
       }
-      el.querySelector('.pos').textContent = (skip + i + 1) + 'º';
+      const pos = skip + i, medal = mode === 'pts' && pos < 3 && !r.lost ? ['🥇', '🥈', '🥉'][pos] : '';
+      el.style.height = (rh - 8) + 'px';
+      el.classList.toggle('t1', medal === '🥇'); el.classList.toggle('t2', medal === '🥈'); el.classList.toggle('t3', medal === '🥉');
+      el.querySelector('.pos').textContent = medal || (pos + 1) + 'º';
       const face = faceOf(r), rf = el.querySelector('.rface');
       if (rf._h !== face){ rf.innerHTML = face; rf._h = face; }
-      const status = r.etapa === 'fim' ? `${TIER_E[r.tier] || '✓'} terminou em ${fmtT(r.t)}` : `<i class="livedot"></i> jogando · ${ETAPA[r.etapa] || 'início'}`;
+      const status = r.etapa === 'fim' ? (r.lost ? `💔 perdeu a Helena em ${fmtT(r.t)}` : `${TIER_E[r.tier] || '✓'} terminou em ${fmtT(r.t)}`) : `<i class="livedot"></i> jogando · ${ETAPA[r.etapa] || 'início'}`;
       const body = mode === 'time'
         ? `<span class="rname"><b>${esc(r.nome)}${r.id === meId ? ' <em>você</em>' : ''}</b><small>${fmtP(r.pts)} pts · ${r.acertos} acertos</small></span><span class="rpts">${fmtT(r.t)}<small>tempo</small></span>`
         : `<span class="rname"><b>${esc(r.nome)}${r.id === meId ? ' <em>você</em>' : ''}</b><small>${status}</small></span><span class="rpts">${fmtP(r.pts)}<small>pts</small></span>`;
       const rb = el.querySelector('.rbody');
       if (rb._h !== body){ rb.innerHTML = body; rb._h = body; }
-      el.style.transform = `translateY(${i * rowH}px)`;
+      el.style.transform = `translateY(${i * rh}px)`;
       seen.add(r.id);
     });
     rows.forEach((el, id) => { if (!seen.has(id)){ el.remove(); rows.delete(id); } });
-    container.style.height = (shown.length * rowH) + 'px';
+    container.style.height = (shown.length * rh) + 'px';
   };
 }
 const loadScript = src => new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
@@ -1383,8 +1414,8 @@ function score(){
   const overall = total >= RESULTS.match.min ? 'match' : total >= RESULTS.quase.min ? 'quase' : 'ghost';
   /* A Helena só aceita o convite se as respostas dela no chat estiverem certas (5 ou 6 de 6) */
   const chatTier = c >= Math.ceil(CHAT.length * .7) ? 'match' : c >= Math.ceil(CHAT.length * .5) ? 'quase' : 'ghost';
-  const tier = rank[chatTier] < rank[overall] ? chatTier : overall;
-  return {f, p, c, total, pct: Math.round(total / TOTAL * 100), overall, chatTier, tier};
+  const tier = S.lost ? 'ghost' : rank[chatTier] < rank[overall] ? chatTier : overall;
+  return {f, p, c, total, pct: Math.round(total / TOTAL * 100), overall, chatTier, tier, lost: !!S.lost};
 }
 let runToken = 0, cleanup = null;
 function go(screen){
@@ -1509,6 +1540,7 @@ VIEWS.intro2 = () => {
       <p class="lead">${PROFILES.length} contatos do CRM estão esperando seu like. Direita para quem tem tudo a ver com o Congresso, esquerda para quem não tem.</p>
       <div class="mini"><div style="color:#FF5A6E">${ico('x', 22, 4)} Passa</div><div style="color:#085FAA">${HEART(22, '#00C2D7')} Match</div></div>
       <div class="tip">${ico('question', 22)}<span><b>Dica:</b> leia os selos. Dado desatualizado, duplicado ou descadastrado também é uma resposta. 😉</span></div>
+      <p class="warnline">⚠️ Cuidado: tem um perfil que você não pode deixar passar. Se deixar, o jogo acaba na hora! 💔</p>
     </div>
     <div class="foot"><button class="btn primary" id="ok">Ver os perfis</button></div></section>`;
   $('#ok').onclick = () => go('swipe');
@@ -1531,6 +1563,7 @@ function cardHTML(i, extra = ''){
 }
 
 VIEWS.swipe = () => {
+  if (S.lost){ go('gameover'); return; }
   if (S.p >= PROFILES.length){ go('matchT'); return; }
   app.innerHTML = `<section class="screen swipe">${topbar('Etapa 2 de 3 · Perfis', `<span id="pc">${S.p + 1}</span> de ${PROFILES.length}`)}
     <div class="deck" id="deck"></div>
@@ -1562,7 +1595,7 @@ VIEWS.swipe = () => {
   };
   const toast = (liked, p) => {
     const ok = liked === p.m;
-    const title = liked ? (ok ? 'Deu match! 💘' : 'Ops, ghosting à vista 👻') : (ok ? 'Boa, passou certo! 👋' : 'Eita, deixou escapar 💔');
+    const title = liked ? (ok ? 'Deu match! 💘' : 'Ops, ghosting à vista 👻') : (ok ? 'Boa, passou certo! 👋' : PROFILES.indexOf(p) === HELENA ? 'Não! Você deixou a Helena passar 💔' : 'Eita, deixou escapar 💔');
     const t = $('#toast'); t.className = 'toast' + (ok ? '' : ' bad');
     t.innerHTML = `<b>${title}</b><p>${esc(p.why)}</p>`;
     requestAnimationFrame(() => t.classList.add('show'));
@@ -1573,7 +1606,10 @@ VIEWS.swipe = () => {
   function fly(card, liked, vx = 0, vy = 0, viaButton = false){
     if (busy) return; busy = true;
     const i = S.p, p = PROFILES[i], dir = liked ? 1 : -1, n = under();
-    S.ans.p[i] = liked; S.p = i + 1; save(); buzz(liked === p.m ? 15 : [10, 40, 10]); bump(liked === p.m);
+    S.ans.p[i] = liked; S.p = i + 1;
+    const lost = i === HELENA && !liked; /* deixou passar a Helena: fim de jogo */
+    if (lost){ S.lost = 'helena'; S.t1 = Date.now(); }
+    save(); buzz(liked === p.m ? 15 : [10, 40, 10]); bump(liked === p.m);
     const from = card._pos || {x: 0, y: 0, r: 0};
     const endX = dir * (window.innerWidth + card.clientWidth);
     const speed = Math.max(Math.abs(vx), viaButton ? 1.5 : 1.15);
@@ -1595,6 +1631,7 @@ VIEWS.swipe = () => {
     setTimeout(() => {
       if (tok !== runToken) return;
       card.remove();
+      if (lost){ setTimeout(() => { if (tok === runToken) go('gameover'); }, 1500); return; }
       if (S.p >= PROFILES.length){ setTimeout(() => { if (tok === runToken) go('matchT'); }, 1300); return; }
       $('#pc').textContent = S.p + 1;
       if (n){ n.classList.remove('next'); n.style.transform = ''; n.getAnimations().forEach(a => a.cancel()); bind(n); }
@@ -1688,7 +1725,7 @@ VIEWS.swipe = () => {
 };
 
 VIEWS.matchT = () => {
-  const h = PROFILES[HELENA], passed = S.ans.p[HELENA] === false, tok = runToken;
+  const h = PROFILES[HELENA], tok = runToken;
   let risers = '';
   for (let k = 0; k < 14; k++) risers += `<span class="riser" style="left:${(k * 7.3 + 3) % 96}%;animation-duration:${6 + (k % 5)}s;animation-delay:-${(k * 0.7).toFixed(1)}s">${k % 2 ? THUMB(18 + (k % 3) * 8, k % 3 ? '#fff' : '#9FF0FA') : HEART(16 + (k % 4) * 6, k % 3 ? '#fff' : '#FF8FA0')}</span>`;
   app.innerHTML = `<section class="screen matchT"><div class="risers" aria-hidden="true">${risers}</div>
@@ -1697,7 +1734,6 @@ VIEWS.matchT = () => {
       <h1 class="bigscript">Deu match!</h1>
       <div class="pair"><div class="face">${AREA_AV}</div><div class="face">${avatar(h.av, true)}</div><span class="heart">${HEART(28)}</span></div>
       <p class="mt-in d2">Você e ${esc(h.n)} curtiram um ao outro.</p>
-      ${passed ? `<p class="second mt-in d2">Você passou a Helena, mas ela curtiu o seu perfil e deu uma segunda chance. 😉</p>` : ''}
       <div class="mission3 mt-in d3"><b>🎯 Agora é conquistar a Helena</b><span>Ela vai puxar papo. Em cada mensagem, escolha a melhor resposta entre 4 opções. Se a conversa for boa, ela confirma presença no Congresso.</span></div>
       <div class="peek mt-in d4" aria-hidden="true"><span class="mini">${avatar(h.av, true)}</span><div class="typing"><i></i><i></i><i></i></div><small>Helena está digitando…</small></div>
     </div>
@@ -1706,6 +1742,22 @@ VIEWS.matchT = () => {
     $('.matchT').classList.add('leaving');
     setTimeout(() => { if (tok === runToken) go('chat'); }, 320);
   };
+};
+
+VIEWS.gameover = () => {
+  const h = PROFILES[HELENA];
+  if (!S.t1){ S.t1 = Date.now(); save(); }
+  app.innerHTML = `<section class="screen matchT gameover">
+    <div class="scroll">
+      <span class="eyebrow mt-in" style="color:#FFB3BE">Fim de jogo</span>
+      <div class="lostface"><div class="face">${avatar(h.av, true)}</div><span class="broken" aria-hidden="true">💔</span></div>
+      <h1 class="bigscript">Deu ruim!</h1>
+      <p class="mt-in d2">Você deixou passar ${esc(h.n)}, a ${esc(h.r)} que era o match perfeito para o Congresso.</p>
+      <div class="mission3 mt-in d3"><b>💡 A lição</b><span>Quem deixa passar o perfil mais qualificado perde a conversa, o convite e o evento. No CRM, o público certo não pode ficar de fora.</span></div>
+    </div>
+    <div class="foot mt-in d3"><button class="btn light" id="ok">Ver meu resultado</button></div></section>`;
+  buzz([30, 80, 30, 80, 60]);
+  $('#ok').onclick = () => go('result');
 };
 
 VIEWS.chat = () => {
@@ -1850,7 +1902,10 @@ VIEWS.chat = () => {
 };
 
 VIEWS.result = () => {
-  const sc = score(), R = RESULTS[sc.tier], t = sc.tier, m = me();
+  const sc = score(), t = sc.tier, m = me();
+  /* quem deixou a Helena passar ganha título e texto próprios */
+  const R = sc.lost ? Object.assign({}, RESULTS.ghost, {title: 'Perdeu a Helena! 💔', sub: 'Você deixou o match perfeito passar.',
+    text: 'Sem o perfil mais qualificado, não tem conversa, convite nem evento. No CRM, o público certo não pode ficar de fora. Bora tentar de novo e, desta vez, dar like em quem tem tudo a ver com o Congresso.'}) : RESULTS[sc.tier];
   if (S.t0 && !S.t1){ S.t1 = Date.now(); save(); }
   /* Envia o placar final antes de consultar a posição */
   const final = S.ranked ? Board.put(RANK.pid, record()).catch(() => { syncScore(); }) : Promise.resolve();
@@ -1871,7 +1926,7 @@ VIEWS.result = () => {
       <h1 class="rtitle">${R.title}</h1>
       <p class="rsub">${esc(R.sub)}</p>
       <p class="rtext">${esc(R.text)}</p>
-      ${sc.chatTier !== sc.overall && sc.tier === sc.chatTier ? `<p class="rnote">Seus filtros e perfis foram bem, mas a Helena ${sc.chatTier === 'ghost' ? 'deu ghosting e não foi ao evento' : 'deixou o date para outra oportunidade'}: no CRM, o processo também conta.</p>` : ''}
+      ${!sc.lost && sc.chatTier !== sc.overall && sc.tier === sc.chatTier ? `<p class="rnote">Seus filtros e perfis foram bem, mas a Helena ${sc.chatTier === 'ghost' ? 'deu ghosting e não foi ao evento' : 'deixou o date para outra oportunidade'}: no CRM, o processo também conta.</p>` : ''}
       <div class="break"><div><strong>${sc.f}/${FILTERS.length}</strong><span>Filtros</span></div><div><strong>${sc.p}/${PROFILES.length}</strong><span>Perfis</span></div><div><strong>${sc.c}/${CHAT.length}</strong><span>Chat</span></div></div>
       <p class="rankline" id="rankline">${S.ranked ? 'Calculando sua posição no ranking…' : S.ranked === false ? 'Partida de treino: só a primeira partida conta para o ranking.' : ''}</p>
     </div>
@@ -1919,6 +1974,7 @@ function record(){
   const r = {nome: (me().nome || 'Participante').slice(0, 20), pts: sc.total * PTS, acertos: sc.total, f: sc.f, p: sc.p, c: sc.c,
     etapa: fim ? 'fim' : etapaOf(S.screen), t: Math.max(0, (S.t1 || Date.now()) - (S.t0 || Date.now())), ini: S.t0 || Date.now(), at: Date.now(), rod: RANK.rod || 0};
   if (fim) r.tier = sc.tier;
+  if (S.lost) r.lost = true;
   return r;
 }
 let syncT = 0;
@@ -2017,7 +2073,7 @@ const DEFAULT_QR_SVG = '<svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/s
 function podiumHTML(L, big){
   return [1, 0, 2].map(k => {
     const r = L[k];
-    return `<div class="pod p${k + 1}${big ? ' big' : ''}">${r ? `<span class="pf">${faceOf(r)}</span><b>${esc(r.nome)}</b><span class="pp">${fmtP(r.pts)} pts${r.etapa === 'fim' ? ' · ' + fmtT(r.t) : ''}</span>` : `<span class="pf empty">?</span><b>&nbsp;</b><span class="pp">&nbsp;</span>`}<div class="step">${k + 1}º</div></div>`;
+    return `<div class="pod p${k + 1}${big ? ' big' : ''}">${k === 0 ? '<span class="crown" aria-hidden="true">👑</span>' : ''}${r ? `<span class="pfw"><span class="pf">${faceOf(r)}</span><span class="pmedal" aria-hidden="true">${['🥇', '🥈', '🥉'][k]}</span></span><b>${esc(r.nome)}</b><span class="pp">${fmtP(r.pts)} pts${r.etapa === 'fim' ? ' · ' + fmtT(r.t) : ''}</span>` : `<span class="pf empty">?</span><b>&nbsp;</b><span class="pp">&nbsp;</span>`}<div class="step">${k + 1}º</div></div>`;
   }).join('');
 }
 function fastHTML(F){
@@ -2032,10 +2088,11 @@ VIEWS.board = () => {
     <header class="bhead"><div class="blogo">${LOGO}</div>
       <div class="bstats"><span class="live big"><i class="livedot"></i> AO VIVO</span><span id="stn">0 participantes</span><span id="stp">0 jogando</span><span id="stf">0 terminaram</span></div></header>
     <div class="bmain">
-      <div class="bpod"><h2>${ico('trophy', 30, 3)} Mais pontos</h2><div class="podium" id="pod">${podiumHTML([])}</div></div>
-      <div class="blist" id="bl"><div class="lwrap" id="lw"></div><p class="bempty" id="bempty">Aguardando participantes… Aponte a câmera para o QR Code e entre na dinâmica.</p></div>
+      <div class="bpod"><h2>${ico('trophy', 30, 3)} Top 3</h2><div class="podium" id="pod">${podiumHTML([])}</div></div>
+      <div class="bcol"><h2>Todos os participantes <small id="blc"></small></h2>
+        <div class="blist" id="bl"><div class="lwrap" id="lw"></div><p class="bempty" id="bempty">Aguardando participantes… Aponte a câmera para o QR Code e entre na dinâmica.</p></div></div>
       <aside class="bside">
-        <div class="bjoin" id="bj"><div id="qr"></div><p>Aponte a câmera<br>e dê match!</p><small>${esc(joinUrl.replace(/^https?:\/\//, ''))}</small>${SALA !== 'principal' ? `<small>Sala <b>${esc(SALA)}</b></small>` : ''}</div>
+        <div class="bjoin" id="bj"><div id="qr"></div><p>Aponte a câmera<br>e dê match!</p>${SALA !== 'principal' ? `<small>Sala <b>${esc(SALA)}</b></small>` : ''}</div>
         <div class="bfast"><h3>${ico('bolt', 22, 3.2)} Mais rápidos</h3><div id="fast">${fastHTML([])}</div><small>Quem terminou com ${MIN_FAST}+ acertos no menor tempo</small></div>
       </aside>
     </div>
@@ -2045,11 +2102,26 @@ VIEWS.board = () => {
   else loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js')
     .then(() => { new QRCode($('#qr'), {text: joinUrl, width: 480, height: 480, colorDark: '#003D9C', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M}); })
     .catch(() => $('#bj').classList.add('noqr'));
-  const rowH = Math.round(Math.max(54, Math.min(76, window.innerHeight * .07)));
-  const bl = $('#bl'), maxRows = Math.max(4, Math.floor((bl.clientHeight || 500) / rowH));
-  const upd = listUpdater($('#lw'), {rowH, skip: 3, max: maxRows});
+  /* Lista completa: as linhas encolhem conforme entra gente; se ainda não couber, a lista rola sozinha */
+  const bl = $('#bl'), lw = $('#lw');
+  const rowH = n => Math.round(Math.max(46, Math.min(Math.max(54, Math.min(74, innerHeight * .068)), (bl.clientHeight || 600) / Math.max(1, n))));
+  const upd = listUpdater(lw, {rowH, skip: 0, max: 1000});
+  let off = 0, phase = 'top', wait = 3500, last = performance.now(), raf = 0;
+  const roll = now => {
+    const dt = Math.min(100, now - last); last = now;
+    const over = Math.max(0, lw.offsetHeight - bl.clientHeight + 6);
+    if (!over){ off = 0; phase = 'top'; wait = 3500; }
+    else if (phase === 'top' || phase === 'bottom'){ wait -= dt; if (wait <= 0) phase = phase === 'top' ? 'down' : 'up'; }
+    else if (phase === 'down'){ off = Math.min(over, off + dt * .045); if (off >= over){ phase = 'bottom'; wait = 4000; } }
+    else { off = Math.max(0, off - dt * .5); if (!off){ phase = 'top'; wait = 4500; } }
+    if (off > over) off = over;
+    lw.style.transform = `translateY(${-off}px)`;
+    bl.classList.toggle('rolling', over > 0);
+    raf = requestAnimationFrame(roll);
+  };
+  raf = requestAnimationFrame(roll);
   let L = [], F = [], pk = '', fk = '';
-  cleanup = Board.watch(data => {
+  const stopWatch = Board.watch(data => {
     if (!data){ $('#binfo').textContent = 'Reconectando ao placar…'; return; }
     L = rankedList(data); F = fastList(data);
     const playing = L.filter(r => r.etapa !== 'fim').length;
@@ -2061,9 +2133,12 @@ VIEWS.board = () => {
     const k2 = F.slice(0, 3).map(r => `${r.id}:${r.t}:${r.nome}`).join('|');
     if (k2 !== fk){ fk = k2; $('#fast').innerHTML = fastHTML(F); }
     upd(L);
+    bl.classList.toggle('compact', L.length * 54 > (bl.clientHeight || 600));
+    $('#blc').textContent = L.length ? `${L.length} no total` : '';
     $('#bempty').hidden = L.length > 0;
     $('#binfo').textContent = Board.live ? `${SALA !== 'principal' ? 'Sala ' + SALA + ' · ' : ''}Empate em pontos fica com quem terminou mais rápido · atualizado às ${new Date().toLocaleTimeString('pt-BR')}` : 'Modo local: mostra só as partidas deste aparelho. Configure o Firebase para juntar todos.';
   }, {stream: true, every: 3000});
+  cleanup = () => { stopWatch(); cancelAnimationFrame(raf); };
   /* Quando o telão está embutido num slide, a apresentação manda revelar ou fechar o pódio */
   window.addEventListener('message', e => {
     const c = e.data && e.data.mp;
@@ -2096,7 +2171,7 @@ async function sha256(t){
 const TIER_L = {match: 'Deu Match', quase: 'Quase lá', ghost: 'Ghosting'};
 /* Ranking do admin: mais acertos; empate, menor tempo de conclusão (quem já terminou fica à frente) */
 const adminList = data => validRecs(data).sort((a, b) =>
-  (b.acertos || 0) - (a.acertos || 0) || (a.etapa === 'fim' ? 0 : 1) - (b.etapa === 'fim' ? 0 : 1) || (a.t || 0) - (b.t || 0));
+  (a.lost ? 1 : 0) - (b.lost ? 1 : 0) || (b.acertos || 0) - (a.acertos || 0) || (a.etapa === 'fim' ? 0 : 1) - (b.etapa === 'fim' ? 0 : 1) || (a.t || 0) - (b.t || 0));
 const fmtHora = ms => ms ? new Date(ms).toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'}) : '—';
 
 VIEWS.adminGate = () => {
@@ -2166,8 +2241,8 @@ VIEWS.admin = () => {
     $('#k3').textContent = fin.length;
     $('#k4').textContent = fin.length ? (fin.reduce((n, r) => n + (r.acertos || 0), 0) / fin.length).toLocaleString('pt-BR', {maximumFractionDigits: 1}) + ` / ${TOTAL}` : '—';
     $('#k5').textContent = fin.length ? fmtT(Math.min(...fin.map(r => r.t || 0))) : '—';
-    const top = fin.slice(0, 3);
-    $('#top3').innerHTML = [0, 1, 2].map(i => { const r = top[i]; return `<div class="tcard t${i + 1}${r ? '' : ' empty'}"><span class="medal">${medal[i]}</span>${r ? `<span class="rface big">${faceOf(r)}</span><div><b>${esc(r.nome)}</b><span>${r.acertos}/${TOTAL} acertos · ${fmtT(r.t)}</span><em>${TIER_E[r.tier] || ''} ${TIER_L[r.tier] || ''}</em></div>` : `<div><b>${i + 1}º lugar</b><span>Aguardando alguém terminar</span></div>`}</div>`; }).join('');
+    const top = fin.filter(r => !r.lost).slice(0, 3);
+    $('#top3').innerHTML = [0, 1, 2].map(i => { const r = top[i]; return `<div class="tcard t${i + 1}${r ? '' : ' empty'}"><span class="medal">${medal[i]}</span>${r ? `<span class="rface big">${faceOf(r)}</span><div><b>${esc(r.nome)}</b><span>${r.acertos}/${TOTAL} acertos · ${fmtT(r.t)}</span><em>${r.lost ? '💔 Perdeu a Helena' : `${TIER_E[r.tier] || ''} ${TIER_L[r.tier] || ''}`}</em></div>` : `<div><b>${i + 1}º lugar</b><span>Aguardando alguém terminar</span></div>`}</div>`; }).join('');
     const shown = q ? L.filter(r => r.nome.toLowerCase().includes(q)) : L;
     $('#cnt').textContent = `${L.length} participante${L.length === 1 ? '' : 's'}${q ? ` · ${shown.length} na busca` : ''}`;
     const winners = new Set(top.map(r => r.id));
@@ -2179,7 +2254,7 @@ VIEWS.admin = () => {
         <td><span class="who"><span class="rface">${faceOf(r)}</span><b>${esc(r.nome)}</b></span></td>
         <td><span class="acc"><b>${r.acertos || 0}</b>/${TOTAL}<i><u style="width:${pct}%"></u></i></span></td>
         <td class="num">${r.etapa === 'fim' ? `<b>${fmtT(r.t)}</b>` : `<span class="muted">${fmtT(r.t)} até agora</span>`}</td>
-        <td>${r.etapa === 'fim' ? `<span class="tag done">${TIER_E[r.tier] || '✓'} ${TIER_L[r.tier] || 'Terminou'}</span>` : `<span class="tag play"><i class="livedot"></i> ${ETAPA[r.etapa] || 'Início'}</span>`}</td>
+        <td>${r.etapa === 'fim' ? `<span class="tag done">${r.lost ? '💔 Perdeu a Helena' : `${TIER_E[r.tier] || '✓'} ${TIER_L[r.tier] || 'Terminou'}`}</span>` : `<span class="tag play"><i class="livedot"></i> ${ETAPA[r.etapa] || 'Início'}</span>`}</td>
         <td class="num">${r.f ?? '—'}/${FILTERS.length}</td><td class="num">${r.p ?? '—'}/${PROFILES.length}</td><td class="num">${r.c ?? '—'}/${CHAT.length}</td>
         <td class="num muted">${fmtHora(r.ini)}</td></tr>`;
     }).join('') : `<tr><td colspan="9" class="empty">${q ? 'Ninguém com esse nome.' : 'Aguardando participantes…'}</td></tr>`;
@@ -2230,7 +2305,7 @@ VIEWS.admin = () => {
   };
   $('#csv').onclick = () => {
     const rows = [['Posição', 'Nome', 'Acertos', 'Pontos', 'Tempo', 'Situação', 'Resultado', 'Filtros', 'Perfis', 'Chat', 'Início']]
-      .concat(L.map((r, i) => [i + 1, r.nome, r.acertos, r.pts, fmtT(r.t), r.etapa === 'fim' ? 'Terminou' : 'Jogando · ' + (ETAPA[r.etapa] || ''), TIER_L[r.tier] || '', r.f, r.p, r.c, fmtHora(r.ini)]));
+      .concat(L.map((r, i) => [i + 1, r.nome, r.acertos, r.pts, fmtT(r.t), r.etapa === 'fim' ? 'Terminou' : 'Jogando · ' + (ETAPA[r.etapa] || ''), r.lost ? 'Perdeu a Helena' : TIER_L[r.tier] || '', r.f, r.p, r.c, fmtHora(r.ini)]));
     const csv = '﻿' + rows.map(r => r.map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(';')).join('\r\n');
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([csv], {type: 'text/csv;charset=utf-8'}));
