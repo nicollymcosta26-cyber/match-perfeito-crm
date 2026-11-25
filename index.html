@@ -616,6 +616,92 @@ body.adm-body{background:#EAF3F8}
   .top3{grid-template-columns:1fr}
   .admlogo{display:none}
 }
+/* ===== regras novas: super like, contagem da rodada, placar congelado e revelação ===== */
+.stamp.sup{left:50%;top:34%;color:#FFD36E;border-color:#FFD36E;transform-origin:center;transform:translateX(-50%) rotate(-8deg) scale(calc(.78 + .22 * var(--k)));white-space:nowrap;font-size:36px}
+.actions{gap:24px}
+.act.sup{position:relative;width:54px;height:54px;color:#fff;background:linear-gradient(135deg,#FFD36E,#F0A800);box-shadow:0 8px 20px rgba(220,150,0,.35)}
+.act.sup .supn{position:absolute;top:-5px;right:-5px;min-width:21px;height:21px;padding:0 5px;border-radius:99px;background:var(--ink);color:#fff;border:2px solid #fff;font:800 11px/17px var(--f-body);font-style:normal}
+.act.sup:disabled{background:#E7EBF2;color:#AEB7C6;box-shadow:none}
+.act.sup:disabled .supn{background:#AEB7C6}
+.act.sup.hot{box-shadow:0 0 0 9px rgba(255,211,110,.35),0 10px 26px rgba(220,150,0,.45)}
+.tip.sup{border-color:#F2C04A;background:#FFF8E1}
+.tip.sup svg{color:#F0A800;flex:none}
+.toast.gold{border-left-color:#F0A800;background:#FFFBEA}
+.plus.neg{color:var(--coral)}
+.xtra{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:0}
+.xtra span{padding:6px 11px;border-radius:99px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);font:800 12.5px/1.2 var(--f-body)}
+.t-quase .xtra span{background:#fff;border-color:var(--line);color:var(--ink)}
+.ralert{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 12px);z-index:90;width:min(400px,calc(100vw - 28px));transform:translateX(-50%);padding:13px 16px;border-radius:16px;background:#1B2540;color:#fff;font:700 14.5px/1.4 var(--f-body);text-align:center;box-shadow:0 16px 40px rgba(0,10,40,.35);animation:raIn .35s cubic-bezier(.2,.9,.3,1.3) both;transition:opacity .5s,transform .5s}
+.ralert b{color:#FFD36E}
+.ralert.out{opacity:0;transform:translate(-50%,-14px)}
+@keyframes raIn{from{opacity:0;transform:translate(-50%,-18px) scale(.96)}}
+.rclock{display:inline-flex;align-items:center;padding:6px 10px;border-radius:99px;background:#1B2540;color:#fff;font:800 12.5px/1 var(--f-body);font-variant-numeric:tabular-nums;white-space:nowrap}
+.rclock.hot{background:var(--coral);animation:popc .9s ease-in-out infinite}
+.chathead .rclock{margin-left:6px}
+.metar:has(.rclock) .count{display:none}
+.reveal .pod.p1 .step{height:clamp(100px,21vh,270px)}
+.reveal .pod.p2 .step{height:clamp(74px,15vh,200px)}
+.reveal .pod.p3 .step{height:clamp(54px,10.5vh,150px)}
+.reveal .pod.big .pf{width:clamp(96px,9.6vw,190px)}
+.reveal .pod.big.p1 .pf{width:clamp(120px,12.4vw,236px)}
+.timeup{background:radial-gradient(130% 80% at 50% 25%,#E0A23A 0%,#B3561E 48%,#4A1A0C 100%)}
+.timeup .tuclock{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.35);color:#FFE7A8}
+.timeup .tuscore{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 26px;border-radius:20px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3)}
+.timeup .tuscore strong{font:800 44px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.timeup .tuscore span{font:700 13.5px/1.2 var(--f-body);opacity:.9}
+.frozen-note{display:flex;flex-direction:column;align-items:center;gap:6px;margin:30px 20px;padding:26px 20px;border-radius:22px;background:var(--paper);border:1px dashed #9FD8E6;text-align:center;color:var(--royal)}
+.frozen-note b{font:800 20px/1.2 var(--f-display)}
+.frozen-note span{font:600 14.5px/1.45 var(--f-body);color:var(--ink)}
+/* telão */
+.bstats .hearts{background:rgba(255,90,110,.22);border:1px solid rgba(255,143,160,.55)}
+.bstats .hearts b{color:#FFB3BE;font-size:1.15em}
+.bstats .hearts.pop{animation:popc .6s cubic-bezier(.2,.9,.3,1.4)}
+.bstats .live.big.closing{background:#FFD36E;color:#5A3E00;animation:popc 1.2s ease-in-out infinite}
+.bstats .live.big.final{background:#fff;color:#0B3A8A}
+.board.frozen .bmain{display:none}
+.bfreeze{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(18px,3vw,50px);align-items:center;padding:0 clamp(10px,2vw,40px)}
+.bfreeze[hidden]{display:none}
+.fzl{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(8px,1.2vh,16px)}
+.fzl .eyebrow{color:#FFE7A8;font-size:clamp(13px,1.1vw,20px)}
+.fzl h1{margin:0;font:400 clamp(60px,7.4vw,140px)/.95 var(--f-script);text-shadow:0 8px 30px rgba(0,0,0,.3);transform:rotate(-3deg)}
+.fzl p{margin:0;max-width:32ch;font:700 clamp(15px,1.35vw,24px)/1.4 var(--f-body);opacity:.9}
+.fzclock{margin-top:clamp(6px,1.5vh,20px);padding:clamp(10px,1.4vh,20px) clamp(28px,3vw,56px);border-radius:32px;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.3);font:800 clamp(80px,11vw,220px)/1 var(--f-display);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.fzclock.hot{background:rgba(255,90,110,.35);border-color:#FF8FA0;animation:popc 1s ease-in-out infinite}
+.fzr{align-self:stretch;display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px);min-height:0;padding:clamp(16px,1.8vw,30px);border-radius:28px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+.fzr h3{display:flex;align-items:center;gap:12px;margin:0;font-size:clamp(20px,1.8vw,32px)}
+.fzr h3 b{display:inline-grid;place-items:center;min-width:1.6em;height:1.6em;padding:0 .35em;border-radius:99px;background:#FFD36E;color:#5A3E00;font-size:.85em}
+.fzchips{flex:1;min-height:0;overflow:hidden;display:flex;flex-wrap:wrap;align-content:flex-start;gap:clamp(8px,.8vw,12px)}
+.fzchip{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 7px;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);font:800 clamp(14px,1.2vw,21px)/1 var(--f-body);animation:screenIn .4s both}
+.fzchip .rface{width:clamp(30px,2.4vw,42px);height:clamp(30px,2.4vw,42px)}
+.fzchip small{font:700 clamp(10px,.8vw,13px)/1 var(--f-body);opacity:.7;text-transform:uppercase;letter-spacing:.08em}
+.fzall{margin:auto;font:800 clamp(18px,1.6vw,28px)/1.3 var(--f-body)}
+.fzdone{margin:0;font:700 clamp(14px,1.1vw,19px)/1.3 var(--f-body);opacity:.85}
+.fzdone b{color:#9FF0FA}
+.reveal.seq h1.in{animation:rvIn .5s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes rvIn{from{opacity:0;transform:rotate(-3deg) translateY(18px) scale(.9)}}
+.reveal .pod.drum .pf.empty{animation:drum .32s ease-in-out infinite;border-color:#FFD36E;color:#FFD36E}
+@keyframes drum{50%{transform:scale(1.08) rotate(3deg)}}
+.reveal .pod.show .pfw,.reveal .pod.show b,.reveal .pod.show .pp{animation:podIn .7s cubic-bezier(.2,.9,.3,1.4) both}
+.reveal .pod.show b{animation-delay:.12s}.reveal .pod.show .pp{animation-delay:.22s}
+.reveal .pod.show .crown{animation:podIn .6s .2s cubic-bezier(.2,.9,.3,1.4) both,crownB 2.4s 1s ease-in-out infinite}
+@keyframes podIn{from{opacity:0;transform:scale(.4) translateY(30px)}}
+.reveal .fastwin[hidden]{display:none}
+.reveal .rvact{position:relative;z-index:2}
+/* admin */
+.btn.warnfill{background:#F0A800;color:#3A2A00;box-shadow:0 10px 24px rgba(240,168,0,.3);border:0}
+.admact .btn.warnfill{color:#3A2A00}
+.btn.warnfill:disabled{opacity:.5;box-shadow:none}
+.rstate{padding:9px 14px;border-radius:99px;font:800 14px/1 var(--f-body);font-variant-numeric:tabular-nums}
+.rstate.closing{background:#FFD36E;color:#5A3E00}
+.rstate.closed{background:#fff;color:#0B3A8A}
+.admwarn.bad{background:#FFE3E7;color:#8A1830;margin-bottom:12px}
+.durs{display:flex;gap:8px}
+.durs label{flex:1;cursor:pointer}
+.durs input{position:absolute;opacity:0;pointer-events:none}
+.durs span{display:block;padding:11px 0;border-radius:12px;border:2px solid var(--line);text-align:center;font:800 15px/1 var(--f-body);color:var(--ink)}
+.durs input:checked+span{border-color:#F0A800;background:#FFF4D1;color:#5A3E00}
+.durs input:focus-visible+span{outline:3px solid var(--cyan);outline-offset:2px}
+td.xt{white-space:nowrap;font:700 13px/1 var(--f-body)}
 </style>
 </head>
 <body>
@@ -923,6 +1009,7 @@ const IC = {
   dice:'<rect x="7" y="7" width="34" height="34" rx="9"/><circle cx="16.5" cy="16.5" r="2.8" fill="currentColor"/><circle cx="31.5" cy="16.5" r="2.8" fill="currentColor"/><circle cx="24" cy="24" r="2.8" fill="currentColor"/><circle cx="16.5" cy="31.5" r="2.8" fill="currentColor"/><circle cx="31.5" cy="31.5" r="2.8" fill="currentColor"/>',
   trophy:'<path d="M15 7h18v10a9 9 0 0 1-18 0z"/><path d="M15 10H8v3a7 7 0 0 0 7 7M33 10h7v3a7 7 0 0 1-7 7M24 26v7M17 41h14M19 33h10l1 8H18z"/>',
   bolt:'<path d="M27 4L9 27h13l-3 17 18-24H24z"/>',
+  clock:'<circle cx="24" cy="26" r="17"/><path d="M24 17v9l6 4M19 4h10"/>',
   star:'<path fill="currentColor" stroke="none" d="M24 4.5l5.9 12.2 13.4 1.9-9.7 9.4 2.3 13.3L24 34.9l-11.9 6.4 2.3-13.3-9.7-9.4 13.4-1.9z"/>'
 };
 const ico = (n, s = 24, sw = 3.2) => `<svg viewBox="0 0 48 48" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
@@ -1245,8 +1332,13 @@ try { RANK = JSON.parse(localStorage.getItem(RKEY) || 'null'); } catch (e) { RAN
 if (!RANK || !RANK.pid) RANK = {pid: uid(), done: false};
 const saveRank = () => { try { localStorage.setItem(RKEY, JSON.stringify(RANK)); } catch (e) {} };
 saveRank();
-const PTS = 100;
-/* "Mais rápidos": quem terminou, com pelo menos 70% de acertos, no menor tempo */
+/* Pontuação: filtros e perfis valem 100 por acerto; cada resposta certa no chat vale 200 (é o processo de CRM).
+   Super like no perfil mais qualificado (a Helena) dá +200. Like em contato que não pode receber convite
+   (desatualizado, duplicado ou descadastrado) custa 50. O total nunca fica negativo. */
+const PTS = {f: 100, p: 100, c: 200, sup: 200, pen: 50};
+const isPen = p => !!(p.old || p.wk === 'stop');
+const MAX_PTS = FILTERS.length * PTS.f + PROFILES.length * PTS.p + CHAT.length * PTS.c + PTS.sup;
+/* "Mais rápidos": quem terminou, com pelo menos 70% de acertos, no menor tempo de decisão */
 const MIN_FAST = Math.ceil(TOTAL * .7);
 
 const Board = {
@@ -1313,7 +1405,7 @@ const Board = {
 };
 /* Rodada: o admin zera o ranking começando uma rodada nova. Cada participação guarda a rodada em que foi jogada,
    e as listas mostram só a rodada atual. Quem já tinha jogado ganha uma tentativa nova valendo ponto. */
-const ROD = {v: 0, at: 0, ready: false};
+const ROD = {v: 0, at: 0, ready: false, fim: null, fk: 'null'};
 const RODKEY = 'matchPerfeito.rodada.' + SALA;
 Board.rodUrl = () => `${LB_URL.replace(/\/+$/, '')}/salas/${SALA}/rodada`;
 Board.getRodada = async () => {
@@ -1322,9 +1414,25 @@ Board.getRodada = async () => {
   if (!r.ok) throw new Error('HTTP ' + r.status);
   return +(await r.json()) || 0;
 };
+/* Encerramento: o admin marca {ini, dur} dentro da rodada. Todo mundo vê a mesma contagem regressiva. */
+Board.getFim = async () => {
+  if (!Board.live){ try { const f = JSON.parse(localStorage.getItem(RODKEY + '.fim') || 'null'); return f && f.rod === ROD.v ? f : null; } catch (e) { return null; } }
+  const r = await fetch(`${Board.rodUrl()}/fim.json`, {cache: 'no-store'});
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  const f = await r.json();
+  return f && typeof f.ini === 'number' && typeof f.dur === 'number' ? {ini: f.ini, dur: f.dur} : null;
+};
+Board.encerrar = async (chave, dur) => {
+  const fim = {ini: Date.now(), dur};
+  if (!Board.live){ try { localStorage.setItem(RODKEY + '.fim', JSON.stringify(Object.assign({rod: ROD.v}, fim))); } catch (e) {} return fim; }
+  /* mesma regra da rodada: só grava com a senha; o valor da rodada não muda */
+  const r = await fetch(`${Board.rodUrl()}.json`, {method: 'PUT', body: JSON.stringify({valor: String(ROD.v), chave: `${chave}:${ROD.v}`, fim})});
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return fim;
+};
 Board.novaRodada = async chave => {
   const v = Date.now();
-  if (!Board.live){ try { localStorage.setItem(RODKEY, String(v)); localStorage.removeItem(Board.localKey); } catch (e) {} return v; }
+  if (!Board.live){ try { localStorage.setItem(RODKEY, String(v)); localStorage.removeItem(Board.localKey); localStorage.removeItem(RODKEY + '.fim'); } catch (e) {} return v; }
   /* A regra do Firebase só aceita se a chave for "senha:valor": sem a senha, ninguém troca a rodada */
   const r = await fetch(`${Board.rodUrl()}.json`, {method: 'PUT', body: JSON.stringify({valor: String(v), chave: `${chave}:${v}`})});
   if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -1332,12 +1440,29 @@ Board.novaRodada = async chave => {
 };
 async function refreshRodada(){
   let v; try { v = await Board.getRodada(); } catch (e) { ROD.ready = true; return false; }
-  const changed = v !== ROD.v; ROD.v = v; ROD.at = Date.now(); ROD.ready = true;
+  const vChanged = v !== ROD.v; ROD.v = v; ROD.at = Date.now(); ROD.ready = true;
+  let f = ROD.fim; try { f = await Board.getFim(); } catch (e) {}
+  if (vChanged && !f) f = null;
+  const fk = JSON.stringify(f), changed = vChanged || fk !== ROD.fk;
+  if (fk !== ROD.fk){
+    /* guarda quando ESTE aparelho viu o encerramento: se o relógio dele estiver muito adiantado ou atrasado,
+       a contagem usa o tempo que faltava naquele momento */
+    ROD.fim = f; ROD.fk = fk;
+    if (f){ const left = f.ini + f.dur * 1000 - Date.now(); ROD.ate = Date.now() + Math.max(0, Math.min(f.dur * 1000, left)); } else ROD.ate = 0;
+  }
   if ((RANK.rod || 0) !== v){
     RANK = {pid: uid(), done: false, rod: v}; saveRank();
     if (S && S.t0 && !S.t1 && !S.ranked){ S.ranked = true; save(); }
   }
   return changed;
+}
+const fimAte = () => ROD.fim ? ROD.ate : 0;
+const roundState = () => !ROD.fim ? 'open' : Date.now() < ROD.ate ? 'closing' : 'closed';
+const FINAL_GRACE = 2500; /* espera as últimas respostas chegarem antes de fechar o resultado */
+function ralert(msg){
+  const old = document.querySelector('.ralert'); if (old) old.remove();
+  const d = document.createElement('div'); d.className = 'ralert'; d.setAttribute('role', 'status'); d.innerHTML = msg;
+  document.body.appendChild(d); setTimeout(() => d.classList.add('out'), 4200); setTimeout(() => d.remove(), 4800);
 }
 const validRecs = data => Object.entries(data || {})
   .filter(([, r]) => r && typeof r.pts === 'number' && r.nome && (r.rod || 0) === ROD.v)
@@ -1347,7 +1472,7 @@ const rankedList = data => validRecs(data)
   .sort((a, b) => (a.lost ? 1 : 0) - (b.lost ? 1 : 0) || b.pts - a.pts || (a.etapa === 'fim' ? 0 : 1) - (b.etapa === 'fim' ? 0 : 1) || (a.t || 0) - (b.t || 0));
 /* Mais rápidos: só quem terminou com pelo menos 70% de acertos, menor tempo primeiro */
 const fastList = data => validRecs(data)
-  .filter(r => r.etapa === 'fim' && (r.acertos || 0) >= MIN_FAST)
+  .filter(r => r.etapa === 'fim' && !r.lost && !r.esg && (r.acertos || 0) >= MIN_FAST)
   .sort((a, b) => (a.t || 0) - (b.t || 0) || b.pts - a.pts);
 const fmtT = ms => { const s = Math.round((ms || 0) / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
 const fmtP = n => (n || 0).toLocaleString('pt-BR');
@@ -1382,9 +1507,9 @@ function listUpdater(container, {rowH = 64, skip = 0, max = 50, meId = null, mod
       el.querySelector('.pos').textContent = medal || (pos + 1) + 'º';
       const face = faceOf(r), rf = el.querySelector('.rface');
       if (rf._h !== face){ rf.innerHTML = face; rf._h = face; }
-      const status = r.etapa === 'fim' ? (r.lost ? `💔 perdeu a Helena em ${fmtT(r.t)}` : `${TIER_E[r.tier] || '✓'} terminou em ${fmtT(r.t)}`) : `<i class="livedot"></i> jogando · ${ETAPA[r.etapa] || 'início'}`;
+      const status = r.lost ? '💔 deixou a Helena passar' : r.esg ? `⏱ tempo esgotado · ${ETAPA[r.etapa] || 'início'}` : r.etapa === 'fim' ? `${TIER_E[r.tier] || '✓'} terminou · ${fmtT(r.t)} decidindo${r.sup ? ' · ⭐' : ''}` : `<i class="livedot"></i> jogando · ${ETAPA[r.etapa] || 'início'}${r.sup ? ' · ⭐' : ''}`;
       const body = mode === 'time'
-        ? `<span class="rname"><b>${esc(r.nome)}${r.id === meId ? ' <em>você</em>' : ''}</b><small>${fmtP(r.pts)} pts · ${r.acertos} acertos</small></span><span class="rpts">${fmtT(r.t)}<small>tempo</small></span>`
+        ? `<span class="rname"><b>${esc(r.nome)}${r.id === meId ? ' <em>você</em>' : ''}</b><small>${fmtP(r.pts)} pts · ${r.acertos} acertos</small></span><span class="rpts">${fmtT(r.t)}<small>decisão</small></span>`
         : `<span class="rname"><b>${esc(r.nome)}${r.id === meId ? ' <em>você</em>' : ''}</b><small>${status}</small></span><span class="rpts">${fmtP(r.pts)}<small>pts</small></span>`;
       const rb = el.querySelector('.rbody');
       if (rb._h !== body){ rb.innerHTML = body; rb._h = body; }
@@ -1415,8 +1540,21 @@ function score(){
   /* A Helena só aceita o convite se as respostas dela no chat estiverem certas (5 ou 6 de 6) */
   const chatTier = c >= Math.ceil(CHAT.length * .7) ? 'match' : c >= Math.ceil(CHAT.length * .5) ? 'quase' : 'ghost';
   const tier = S.lost ? 'ghost' : rank[chatTier] < rank[overall] ? chatTier : overall;
-  return {f, p, c, total, pct: Math.round(total / TOTAL * 100), overall, chatTier, tier, lost: !!S.lost};
+  const sup = S.sup === HELENA && S.ans.p[HELENA] === true;
+  const pen = PROFILES.reduce((n, q, i) => n + (S.ans.p[i] === true && isPen(q) ? 1 : 0), 0);
+  const pts = Math.max(0, f * PTS.f + p * PTS.p + c * PTS.c + (sup ? PTS.sup : 0) - pen * PTS.pen);
+  return {f, p, c, total, pct: Math.round(total / TOTAL * 100), overall, chatTier, tier, lost: !!S.lost, sup, pen, pts};
 }
+/* Relógio de decisão: só corre enquanto a pessoa decide. Para durante as explicações, os avisos e as falas da Helena,
+   então ler o conteúdo não prejudica ninguém no desempate. */
+const clk = {
+  run(){ if (S.t0 && !S.t1 && S.ck && S.ck.run == null){ S.ck.run = Date.now(); save(); } },
+  pause(){ if (S.ck && S.ck.run != null){ S.ck.acc += Math.max(0, Date.now() - S.ck.run); S.ck.run = null; save(); } },
+  ms(){
+    if (!S.ck) return Math.max(0, (S.t1 || Date.now()) - (S.t0 || Date.now()));
+    return S.ck.acc + (S.ck.run != null ? Math.max(0, Date.now() - S.ck.run) : 0);
+  }
+};
 let runToken = 0, cleanup = null;
 function go(screen){
   if (cleanup){ try { cleanup(); } catch (e) {} cleanup = null; }
@@ -1440,7 +1578,7 @@ function floaters(n, seed){
 const VIEWS = {};
 
 VIEWS.splash = () => {
-  const inProgress = saved && saved.screen && !['splash', 'howto', 'result', 'ranking'].includes(saved.screen);
+  const inProgress = saved && saved.screen && !['splash', 'howto', 'result', 'ranking', 'timeup'].includes(saved.screen);
   app.innerHTML = `<section class="screen splash">${floaters(16, 11)}
     <div class="splash-main">
       <span class="chipline">${ico('bulb', 16, 3.6)} Workshop de CRM</span>
@@ -1462,8 +1600,10 @@ VIEWS.howto = () => {
       <div><span class="eyebrow">Antes do primeiro date</span><h1 style="font-size:34px;margin-top:6px">Regras do date</h1></div>
       <div class="rule"><span class="ic" style="background:linear-gradient(135deg,#00C2D7,#085FAA);color:#fff">${HEART(30, '#fff')}</span><p><b>Arraste para a direita</b> (ou toque no coração) quando o perfil tem tudo a ver com o evento.</p></div>
       <div class="rule"><span class="ic" style="background:#FFE8EB;color:#FF5A6E">${ico('x', 28, 4)}</span><p><b>Arraste para a esquerda</b> (ou toque no X) quando não é match.</p></div>
-      <div class="rule"><span class="ic" style="background:#D2EFF5;color:#2148A0">${ico('chat', 30)}</span><p><b>No chat, escolha a melhor resposta.</b> Cada acerto aumenta sua compatibilidade.</p></div>
-      <div class="rule"><span class="ic" style="background:#FFF4D1;color:#E09A00">${ico('trophy', 30)}</span><p><b>Cada acerto vale 100 pontos</b> no ranking ao vivo. Empate fica com quem terminar mais rápido. Só a primeira partida conta.</p></div>
+      <div class="rule"><span class="ic" style="background:linear-gradient(135deg,#FFD36E,#F0A800);color:#fff">${ico('star', 28, 0)}</span><p><b>Você tem 1 super like.</b> Arraste para cima (ou toque na estrela) no perfil mais qualificado e ganhe <b>+200</b>.</p></div>
+      <div class="rule"><span class="ic" style="background:#D2EFF5;color:#2148A0">${ico('chat', 30)}</span><p><b>No chat, escolha a melhor resposta.</b> Cada acerto na conversa vale <b>200 pontos</b>.</p></div>
+      <div class="rule"><span class="ic" style="background:#FFF4D1;color:#E09A00">${ico('trophy', 30)}</span><p><b>Filtros e perfis valem 100.</b> Like em contato desatualizado, duplicado ou descadastrado custa <b>−50</b>.</p></div>
+      <div class="rule"><span class="ic" style="background:#E6ECF7;color:#2148A0">${ico('clock', 28)}</span><p><b>Empate?</b> Vence quem decidiu mais rápido. O relógio só corre enquanto você decide, nunca enquanto lê as explicações. Só a primeira partida conta.</p></div>
       <div class="stats3"><div><strong>3</strong><span>etapas</span></div><div><strong>${TOTAL}</strong><span>interações</span></div><div><strong>~5</strong><span>minutos</span></div></div>
     </div>
     <div class="foot"><button class="btn primary" id="ok">Entendi, bora!</button></div></section>`;
@@ -1524,10 +1664,10 @@ VIEWS.filter = () => {
     const sc = $('#sc'); setTimeout(() => sc.scrollTo({top: sc.scrollHeight, behavior: 'smooth'}), 60);
   };
   app.querySelectorAll('.opt').forEach(b => b.onclick = () => {
-    const k = +b.dataset.k; S.ans.f[i] = k; save(); buzz(k === q.c ? 12 : [10, 40, 10]); paint(k); bump(k === q.c);
+    const k = +b.dataset.k; clk.pause(); S.ans.f[i] = k; save(); buzz(k === q.c ? 12 : [10, 40, 10]); paint(k); bump(k === q.c ? PTS.f : 0);
     $('.prog i').style.width = (answered() / TOTAL * 100) + '%';
   });
-  if (done) paint(S.ans.f[i]);
+  if (done) paint(S.ans.f[i]); else clk.run();
   $('#next').onclick = () => { if (i < FILTERS.length - 1){ S.f++; go('filter'); } else go('intro2'); };
 };
 
@@ -1539,7 +1679,8 @@ VIEWS.intro2 = () => {
       <h2>Hora de dar match</h2>
       <p class="lead">${PROFILES.length} contatos do CRM estão esperando seu like. Direita para quem tem tudo a ver com o Congresso, esquerda para quem não tem.</p>
       <div class="mini"><div style="color:#FF5A6E">${ico('x', 22, 4)} Passa</div><div style="color:#085FAA">${HEART(22, '#00C2D7')} Match</div></div>
-      <div class="tip">${ico('question', 22)}<span><b>Dica:</b> leia os selos. Dado desatualizado, duplicado ou descadastrado também é uma resposta. 😉</span></div>
+      <div class="tip">${ico('question', 22)}<span><b>Dica:</b> leia os selos. Like em contato desatualizado, duplicado ou descadastrado custa <b>−50 pontos</b>. 😉</span></div>
+      <div class="tip sup">${ico('star', 22, 0)}<span><b>Você tem 1 super like:</b> arraste o card para cima (ou toque na estrela) no perfil mais qualificado e ganhe <b>+200</b>.</span></div>
       <p class="warnline">⚠️ Cuidado: tem um perfil que você não pode deixar passar. Se deixar, o jogo acaba na hora! 💔</p>
     </div>
     <div class="foot"><button class="btn primary" id="ok">Ver os perfis</button></div></section>`;
@@ -1550,7 +1691,7 @@ function cardHTML(i, extra = ''){
   const p = PROFILES[i];
   return `<article class="card ${extra}${p.old ? ' old' : ''}" data-i="${i}" aria-label="${esc(p.n)}, ${esc(p.r)}">
     ${avatar(p.av)}
-    <span class="stamp yes">MATCH</span><span class="stamp no">PASSA</span>
+    <span class="stamp yes">MATCH</span><span class="stamp no">PASSA</span><span class="stamp sup">SUPER LIKE</span>
     <div class="info">
       <h3>${esc(p.n)}${p.a ? `, <span class="age">${p.a}</span>` : ''}</h3>
       <div class="role">${esc(p.r)}</div>
@@ -1569,10 +1710,12 @@ VIEWS.swipe = () => {
     <div class="deck" id="deck"></div>
     <div class="actions">
       <div><button class="act no" id="no" aria-label="Passar">${ico('x', 30, 4.4)}</button><span class="act-label">Passa</span></div>
+      <div><button class="act sup" id="sup" aria-label="Dar super like (só 1 por partida)" ${S.sup != null ? 'disabled' : ''}>${ico('star', 26, 0)}<i class="supn">${S.sup != null ? 0 : 1}</i></button><span class="act-label" id="supl">${S.sup != null ? 'Usado' : 'Super like'}</span></div>
       <div><button class="act yes" id="yes" aria-label="Dar match">${HEART(32, '#fff')}</button><span class="act-label">Match</span></div>
     </div>
     <div class="toast" id="toast" role="status"></div></section>`;
-  const deck = $('#deck'), tok = runToken, bYes = $('#yes'), bNo = $('#no');
+  const deck = $('#deck'), tok = runToken, bYes = $('#yes'), bNo = $('#no'), bSup = $('#sup');
+  const supFree = () => S.sup == null;
   const NEXT_T = 'translate3d(0,16px,0) scale(.94)';
   const T = p => `translate3d(${p.x.toFixed(1)}px,${p.y.toFixed(1)}px,0) rotate(${p.r.toFixed(2)}deg)`;
   const top = () => deck.querySelector(`.card[data-i="${S.p}"]`);
@@ -1586,47 +1729,61 @@ VIEWS.swipe = () => {
     bNo.style.transform = `scale(${dx < 0 ? 1 + .18 * k : 1 - .1 * k})`;
     bYes.classList.toggle('hot', dx > 50); bNo.classList.toggle('hot', dx < -50);
   };
-  const resetBtns = () => { bYes.style.transform = bNo.style.transform = ''; bYes.classList.remove('hot'); bNo.classList.remove('hot'); };
-  const setStamps = (card, dx) => {
-    const k = Math.min(1, Math.abs(dx) / (card.clientWidth * .3));
-    const y = card.querySelector('.stamp.yes'), n = card.querySelector('.stamp.no');
-    y.style.opacity = dx > 0 ? k : 0; n.style.opacity = dx < 0 ? k : 0;
-    y.style.setProperty('--k', dx > 0 ? k : 0); n.style.setProperty('--k', dx < 0 ? k : 0);
+  const resetBtns = () => { bYes.style.transform = bNo.style.transform = bSup.style.transform = ''; bYes.classList.remove('hot'); bNo.classList.remove('hot'); bSup.classList.remove('hot'); };
+  /* up: arrastando para cima com o super like disponível */
+  const isUp = (card, dx, dy) => supFree() && -dy > Math.abs(dx) && -dy > 24;
+  const setStamps = (card, dx, dy = 0) => {
+    const up = isUp(card, dx, dy);
+    const k = up ? Math.min(1, -dy / (card.clientHeight * .22)) : Math.min(1, Math.abs(dx) / (card.clientWidth * .3));
+    const y = card.querySelector('.stamp.yes'), n = card.querySelector('.stamp.no'), u = card.querySelector('.stamp.sup');
+    y.style.opacity = !up && dx > 0 ? k : 0; n.style.opacity = !up && dx < 0 ? k : 0; u.style.opacity = up ? k : 0;
+    y.style.setProperty('--k', !up && dx > 0 ? k : 0); n.style.setProperty('--k', !up && dx < 0 ? k : 0); u.style.setProperty('--k', up ? k : 0);
+    bSup.classList.toggle('hot', up && k > .6);
   };
-  const toast = (liked, p) => {
-    const ok = liked === p.m;
-    const title = liked ? (ok ? 'Deu match! 💘' : 'Ops, ghosting à vista 👻') : (ok ? 'Boa, passou certo! 👋' : PROFILES.indexOf(p) === HELENA ? 'Não! Você deixou a Helena passar 💔' : 'Eita, deixou escapar 💔');
-    const t = $('#toast'); t.className = 'toast' + (ok ? '' : ' bad');
+  const toast = (liked, p, sup) => {
+    const ok = liked === p.m, hel = PROFILES.indexOf(p) === HELENA;
+    const title = sup ? (hel ? `Super like certeiro! ⭐ +${PTS.sup} de bônus` : ok ? 'Super like! 💙 Bom perfil, mas não era o mais qualificado' : isPen(p) ? `Super like em contato inválido 😬 −${PTS.pen}` : 'Super like no perfil errado 😬')
+      : liked ? (ok ? 'Deu match! 💘' : isPen(p) ? `Ops! Contato inválido: −${PTS.pen} pontos 🚫` : 'Ops, ghosting à vista 👻') : (ok ? 'Boa, passou certo! 👋' : hel ? 'Não! Você deixou a Helena passar 💔' : 'Eita, deixou escapar 💔');
+    const t = $('#toast'); t.className = 'toast' + (ok ? '' : ' bad') + (sup && hel ? ' gold' : '');
     t.innerHTML = `<b>${title}</b><p>${esc(p.why)}</p>`;
     requestAnimationFrame(() => t.classList.add('show'));
-    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3200);
+    /* o relógio de decisão fica parado enquanto o aviso está na tela */
+    clearTimeout(toastT); toastT = setTimeout(() => { t.classList.remove('show'); if (tok === runToken && S.p < PROFILES.length && !S.lost) clk.run(); }, 3200);
   };
 
   /* Arremesso: segue a velocidade e a direção do dedo, como no Tinder */
-  function fly(card, liked, vx = 0, vy = 0, viaButton = false){
+  function fly(card, liked, vx = 0, vy = 0, viaButton = false, sup = false){
     if (busy) return; busy = true;
+    if (sup && !supFree()) sup = false;
     const i = S.p, p = PROFILES[i], dir = liked ? 1 : -1, n = under();
+    clk.pause();
     S.ans.p[i] = liked; S.p = i + 1;
+    if (sup){ S.sup = i; bSup.disabled = true; bSup.querySelector('.supn').textContent = '0'; $('#supl').textContent = 'Usado'; }
     const lost = i === HELENA && !liked; /* deixou passar a Helena: fim de jogo */
-    if (lost){ S.lost = 'helena'; S.t1 = Date.now(); }
-    save(); buzz(liked === p.m ? 15 : [10, 40, 10]); bump(liked === p.m);
+    if (lost){ S.lost = 'helena'; clk.pause(); S.t1 = Date.now(); }
+    const delta = (liked === p.m ? PTS.p : 0) + (sup && i === HELENA ? PTS.sup : 0) - (liked && isPen(p) ? PTS.pen : 0);
+    save(); buzz(liked === p.m ? (sup ? [15, 50, 15] : 15) : [10, 40, 10]); bump(delta);
     const from = card._pos || {x: 0, y: 0, r: 0};
-    const endX = dir * (window.innerWidth + card.clientWidth);
-    const speed = Math.max(Math.abs(vx), viaButton ? 1.5 : 1.15);
-    const dur = Math.round(Math.max(260, Math.min(560, Math.abs(endX - from.x) / speed)));
-    const endY = viaButton ? -70 : from.y + Math.max(-1.4, Math.min(1.4, vy)) * dur * .55;
-    const endR = viaButton ? dir * 28 : from.r + dir * (14 + Math.min(16, Math.abs(vx) * 9));
-    setStamps(card, dir * 9999);
+    const endX = sup ? from.x * 1.4 : dir * (window.innerWidth + card.clientWidth);
+    const speed = Math.max(Math.abs(sup ? vy : vx), viaButton ? 1.5 : 1.15);
+    const endY0 = -(window.innerHeight + card.clientHeight);
+    const dur = Math.round(Math.max(260, Math.min(560, Math.abs((sup ? endY0 - from.y : endX - from.x)) / speed)));
+    const endY = sup ? endY0 : viaButton ? -70 : from.y + Math.max(-1.4, Math.min(1.4, vy)) * dur * .55;
+    const endR = sup ? from.r * .5 : viaButton ? dir * 28 : from.r + dir * (14 + Math.min(16, Math.abs(vx) * 9));
+    if (sup){ const u = card.querySelector('.stamp.sup'); setStamps(card, 0, 0); u.style.opacity = 1; u.style.setProperty('--k', 1); }
+    else setStamps(card, dir * 9999);
     card.classList.add('flying');
-    const frames = viaButton
+    const frames = sup && viaButton
+      ? [{transform: T(from), offset: 0}, {transform: T({x: 0, y: 22, r: 0}), offset: .22}, {transform: T({x: endX, y: endY, r: endR}), offset: 1}]
+      : viaButton
       ? [{transform: T(from), offset: 0}, {transform: T({x: -dir * 18, y: 4, r: -dir * 3}), offset: .2}, {transform: T({x: endX, y: endY, r: endR}), offset: 1}]
       : [{transform: T(from)}, {transform: T({x: endX, y: endY, r: endR})}];
     const total = viaButton ? dur + 160 : dur;
     card.animate(frames, {duration: total, easing: viaButton ? 'cubic-bezier(.45,0,.6,1)' : 'cubic-bezier(.12,.62,.32,1)', fill: 'forwards'});
     if (n) n.animate([{transform: n.style.transform || NEXT_T}, {transform: 'translate3d(0,0,0) scale(1)'}], {duration: Math.min(total, 420), easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards'});
     resetBtns();
-    (liked ? bYes : bNo).animate([{transform: 'scale(1)'}, {transform: 'scale(1.24)'}, {transform: 'scale(1)'}], {duration: 340, easing: 'ease-out'});
-    toast(liked, p);
+    (sup ? bSup : liked ? bYes : bNo).animate([{transform: 'scale(1)'}, {transform: 'scale(1.24)'}, {transform: 'scale(1)'}], {duration: 340, easing: 'ease-out'});
+    toast(liked, p, sup);
     $('.prog i').style.width = (answered() / TOTAL * 100) + '%';
     setTimeout(() => {
       if (tok !== runToken) return;
@@ -1671,9 +1828,10 @@ VIEWS.swipe = () => {
       const cw = card.clientWidth;
       card._pos = {x: dx, y: dy, r: (dx / cw) * 24 * (grabTop ? 1 : -1)};
       card.style.transform = T(card._pos);
-      setStamps(card, dx);
-      setUnder(Math.min(1, Math.abs(dx) / (cw * .45)));
-      setBtns(dx);
+      setStamps(card, dx, dy);
+      setUnder(Math.min(1, Math.max(Math.abs(dx) / (cw * .45), isUp(card, dx, dy) ? -dy / (card.clientHeight * .4) : 0)));
+      if (isUp(card, dx, dy)){ bYes.style.transform = bNo.style.transform = 'scale(.92)'; bYes.classList.remove('hot'); bNo.classList.remove('hot'); bSup.style.transform = `scale(${1 + .2 * Math.min(1, -dy / 120)})`; }
+      else { bSup.style.transform = ''; setBtns(dx); }
     };
     card.addEventListener('pointerdown', e => {
       if (busy || drag || (e.pointerType === 'mouse' && e.button !== 0)) return;
@@ -1700,7 +1858,9 @@ VIEWS.swipe = () => {
       const a = samples[0], b = samples[samples.length - 1], dt = Math.max(16, b.t - a.t);
       const vx = (b.x - a.x) / dt, vy = (b.y - a.y) / dt;
       const flick = Math.abs(vx) > .35 && Math.abs(dx) > 30 && Math.sign(vx) === Math.sign(dx);
-      if (Math.abs(dx) > card.clientWidth * .33 || flick) fly(card, dx > 0, vx, vy);
+      const flickUp = vy < -.45 && dy < -40;
+      if (isUp(card, dx, dy) && (-dy > card.clientHeight * .25 || flickUp)) fly(card, true, vx, vy, false, true);
+      else if (Math.abs(dx) > card.clientWidth * .33 || flick) fly(card, dx > 0, vx, vy);
       else if (Math.abs(dx) > 2 || Math.abs(dy) > 2) springBack(card);
       else { card._pos = {x: 0, y: 0, r: 0}; card.style.transform = ''; setUnder(0); resetBtns(); }
     };
@@ -1711,10 +1871,11 @@ VIEWS.swipe = () => {
 
   bYes.onclick = () => { const c = top(); if (c && !busy) fly(c, true, 0, 0, true); };
   bNo.onclick = () => { const c = top(); if (c && !busy) fly(c, false, 0, 0, true); };
-  document.onkeydown = e => { if (S.screen !== 'swipe') return; if (e.key === 'ArrowRight') bYes.click(); if (e.key === 'ArrowLeft') bNo.click(); };
+  bSup.onclick = () => { const c = top(); if (c && !busy && supFree()) fly(c, true, 0, 0, true, true); };
+  document.onkeydown = e => { if (S.screen !== 'swipe') return; if (e.key === 'ArrowRight') bYes.click(); if (e.key === 'ArrowLeft') bNo.click(); if (e.key === 'ArrowUp'){ e.preventDefault(); bSup.click(); } };
 
   deck.innerHTML = (S.p + 1 < PROFILES.length ? cardHTML(S.p + 1, 'next') : '') + cardHTML(S.p);
-  bind(top());
+  bind(top()); clk.run();
   /* Dica de gesto no primeiro card, como o "balançadinho" de onboarding */
   if (S.p === 0 && !S.ans.p.length) setTimeout(() => {
     const c = top();
@@ -1746,7 +1907,7 @@ VIEWS.matchT = () => {
 
 VIEWS.gameover = () => {
   const h = PROFILES[HELENA];
-  if (!S.t1){ S.t1 = Date.now(); save(); }
+  if (!S.t1){ clk.pause(); S.t1 = Date.now(); save(); }
   app.innerHTML = `<section class="screen matchT gameover">
     <div class="scroll">
       <span class="eyebrow mt-in" style="color:#FFB3BE">Fim de jogo</span>
@@ -1809,11 +1970,11 @@ VIEWS.chat = () => {
     else if (i === 0){ await sleep(700); if (!alive()) return; }
     if (!await say(q.msg)) return;
     rep.innerHTML = `<span class="hint">Responder</span>` + q.ord.map(k => `<button class="reply" data-k="${k}">${esc(q.o[k][0])}</button>`).join('');
-    rep.scrollTop = 0; down();
+    rep.scrollTop = 0; down(); clk.run();
     rep.querySelectorAll('.reply').forEach(b => b.onclick = async () => {
       const k = +b.dataset.k, ok = k === q.c;
-      rep.innerHTML = '';
-      S.ans.c[i] = k; save(); buzz(ok ? 12 : [10, 40, 10]); bump(ok);
+      rep.innerHTML = ''; clk.pause();
+      S.ans.c[i] = k; save(); buzz(ok ? 12 : [10, 40, 10]); bump(ok ? PTS.c : 0);
       $('.chatprog .prog i').style.width = (answered() / TOTAL * 100) + '%';
       const w = me(q.o[k][0]);
       if (ghostsAt(i)){ mark(w, ok, q, true); S.c = i + 1; save(); ending(); return; }
@@ -1906,7 +2067,7 @@ VIEWS.result = () => {
   /* quem deixou a Helena passar ganha título e texto próprios */
   const R = sc.lost ? Object.assign({}, RESULTS.ghost, {title: 'Perdeu a Helena! 💔', sub: 'Você deixou o match perfeito passar.',
     text: 'Sem o perfil mais qualificado, não tem conversa, convite nem evento. No CRM, o público certo não pode ficar de fora. Bora tentar de novo e, desta vez, dar like em quem tem tudo a ver com o Congresso.'}) : RESULTS[sc.tier];
-  if (S.t0 && !S.t1){ S.t1 = Date.now(); save(); }
+  if (S.t0 && !S.t1){ clk.pause(); S.t1 = Date.now(); save(); }
   /* Envia o placar final antes de consultar a posição */
   const final = S.ranked ? Board.put(RANK.pid, record()).catch(() => { syncScore(); }) : Promise.resolve();
   if (S.ranked && !RANK.done){ RANK.done = true; saveRank(); }
@@ -1922,12 +2083,13 @@ VIEWS.result = () => {
           <circle id="arc" cx="88" cy="88" r="76" fill="none" stroke="${bar}" stroke-width="14" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" style="transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)"/></svg>
         <div class="val"><strong id="pct">0%</strong><span>compatibilidade</span></div>
       </div>
-      <span class="hits">${sc.total} de ${TOTAL} acertos · ${fmtP(sc.total * PTS)} pts${S.t0 && S.t1 ? ` · ⏱ ${fmtT(S.t1 - S.t0)}` : ''}</span>
+      <span class="hits" title="Tempo de decisão: o relógio só corre enquanto você decide">${sc.total}/${TOTAL} acertos · ${fmtP(sc.pts)} pts${S.t0 && S.t1 ? ` · ⏱ ${fmtT(clk.ms())}` : ''}</span>
       <h1 class="rtitle">${R.title}</h1>
       <p class="rsub">${esc(R.sub)}</p>
       <p class="rtext">${esc(R.text)}</p>
       ${!sc.lost && sc.chatTier !== sc.overall && sc.tier === sc.chatTier ? `<p class="rnote">Seus filtros e perfis foram bem, mas a Helena ${sc.chatTier === 'ghost' ? 'deu ghosting e não foi ao evento' : 'deixou o date para outra oportunidade'}: no CRM, o processo também conta.</p>` : ''}
-      <div class="break"><div><strong>${sc.f}/${FILTERS.length}</strong><span>Filtros</span></div><div><strong>${sc.p}/${PROFILES.length}</strong><span>Perfis</span></div><div><strong>${sc.c}/${CHAT.length}</strong><span>Chat</span></div></div>
+      <div class="break"><div><strong>${sc.f}/${FILTERS.length}</strong><span>Filtros</span></div><div><strong>${sc.p}/${PROFILES.length}</strong><span>Perfis</span></div><div><strong>${sc.c}/${CHAT.length}</strong><span>Chat · 200 pts</span></div></div>
+      ${sc.sup || sc.pen ? `<p class="xtra">${sc.sup ? `<span>⭐ Super like certeiro +${PTS.sup}</span>` : ''}${sc.pen ? `<span>🚫 ${sc.pen} contato${sc.pen > 1 ? 's' : ''} inválido${sc.pen > 1 ? 's' : ''} −${sc.pen * PTS.pen}</span>` : ''}</p>` : ''}
       <p class="rankline" id="rankline">${S.ranked ? 'Calculando sua posição no ranking…' : S.ranked === false ? 'Partida de treino: só a primeira partida conta para o ranking.' : ''}</p>
     </div>
     <div class="foot"><button class="btn ${t === 'quase' ? 'primary' : 'light'}" id="rk">${ico('trophy', 20, 3.2)} Ver ranking ao vivo</button>
@@ -1935,7 +2097,8 @@ VIEWS.result = () => {
   $('#rk').onclick = () => go('ranking');
   if (S.ranked) final.then(() => Board.all()).then(data => {
     const L = rankedList(data), F = fastList(data), i = L.findIndex(r => r.id === RANK.pid), j = F.findIndex(r => r.id === RANK.pid), el = $('#rankline');
-    if (el && i >= 0) el.innerHTML = `${esc(m.nome)}, você está em <b>${i + 1}º lugar</b> de ${L.length} em pontos` + (j >= 0 ? ` e em <b>${j + 1}º</b> entre os mais rápidos` : '');
+    if (el && roundState() === 'closing') el.innerHTML = '🔒 Placar congelado: as posições aparecem no telão quando a rodada encerrar.';
+    else if (el && i >= 0) el.innerHTML = `${esc(m.nome)}, você está em <b>${i + 1}º lugar</b> de ${L.length} em pontos` + (j >= 0 ? ` e em <b>${j + 1}º</b> entre os mais rápidos` : '');
   }).catch(() => { const el = $('#rankline'); if (el) el.textContent = 'Não consegui consultar o ranking agora. Toque em “Ver ranking ao vivo”.'; });
   requestAnimationFrame(() => requestAnimationFrame(() => { const a = $('#arc'); if (a) a.style.strokeDashoffset = C * (1 - sc.total / TOTAL); }));
   const el = $('#pct'), t0 = performance.now();
@@ -1954,7 +2117,8 @@ function review(){
     h += `<div class="ri ${g ? '' : 'bad'}">${g ? ok : bad}<div><h4>${esc(q.q)}</h4><p>Você: <b>${esc(q.o[k] ?? '—')}</b></p>${g ? '' : `<p>Certo: <b>${esc(q.o[q.c])}</b></p>`}<p>${esc(g ? q.ok : errOf(q, k))}</p></div></div>`; });
   h += '<h5>Etapa 2 · Perfis</h5>';
   PROFILES.forEach((p, i) => { const v = S.ans.p[i], g = v === p.m;
-    h += `<div class="ri ${g ? '' : 'bad'}">${g ? ok : bad}<div><h4>${esc(p.n)} · ${esc(p.r)}</h4><p>Você: <b>${v ? 'deu match' : 'passou'}</b> · Gabarito: <b>${p.m ? 'Match' : 'Não match'}</b></p><p>${esc(p.why)}</p></div></div>`; });
+    const xt = v && S.sup === i ? (i === HELENA ? ` · <b>⭐ +${PTS.sup}</b>` : ' · super like sem bônus') : v && isPen(p) ? ` · <b>−${PTS.pen} pts</b>` : '';
+    h += `<div class="ri ${g ? '' : 'bad'}">${g ? ok : bad}<div><h4>${esc(p.n)} · ${esc(p.r)}</h4><p>Você: <b>${v ? (S.sup === i ? 'deu super like' : 'deu match') : 'passou'}</b> · Gabarito: <b>${p.m ? 'Match' : 'Não match'}</b>${xt}</p><p>${esc(p.why)}</p></div></div>`; });
   h += '<h5>Etapa 3 · Chat com a Helena</h5>';
   CHAT.forEach((q, i) => { const k = S.ans.c[i], g = k === q.c;
     h += `<div class="ri ${g ? '' : 'bad'}">${g ? ok : bad}<div><h4>Decisão ${i + 1} · ${esc(q.t)}</h4><p>Você: <b>“${esc(q.o[k] ? q.o[k][0] : '—')}”</b></p>${g ? '' : `<p>Certo: <b>“${esc(q.o[q.c][0])}”</b></p>`}<p>${esc(q.seal)}</p></div></div>`; });
@@ -1966,15 +2130,16 @@ function review(){
 
 
 /* ---------------- Pontos ao vivo ---------------- */
-const ptsNow = () => score().total * PTS;
-const ptsChip = () => `<span class="ptschip${S.ranked === false ? ' train' : ''}" id="pts" title="${S.ranked === false ? 'Partida de treino: não conta para o ranking' : '100 pontos por acerto'}">${ico('star', 14, 0)}<b>${fmtP(ptsNow())}</b> pts${S.ranked === false ? ' · treino' : ''}</span>`;
+const ptsNow = () => score().pts;
+const ptsChip = () => `<span class="ptschip${S.ranked === false ? ' train' : ''}" id="pts" title="${S.ranked === false ? 'Partida de treino: não conta para o ranking' : 'Filtros e perfis: 100 por acerto · chat: 200 · super like no perfil certo: +200 · like em contato inválido: −50'}">${ico('star', 14, 0)}<b>${fmtP(ptsNow())}</b> pts${S.ranked === false ? ' · treino' : ''}</span>`;
 const etapaOf = s => ({intro1: 'filtros', filter: 'filtros', intro2: 'perfis', swipe: 'perfis', matchT: 'chat', chat: 'chat', result: 'fim', ranking: 'fim'})[s] || 'filtros';
 function record(){
-  const sc = score(), fim = !!S.t1;
-  const r = {nome: (me().nome || 'Participante').slice(0, 20), pts: sc.total * PTS, acertos: sc.total, f: sc.f, p: sc.p, c: sc.c,
-    etapa: fim ? 'fim' : etapaOf(S.screen), t: Math.max(0, (S.t1 || Date.now()) - (S.t0 || Date.now())), ini: S.t0 || Date.now(), at: Date.now(), rod: RANK.rod || 0};
+  const sc = score(), fim = !!S.t1 && !S.esg;
+  const r = {nome: (me().nome || 'Participante').slice(0, 20), pts: sc.pts, acertos: sc.total, f: sc.f, p: sc.p, c: sc.c, sup: sc.sup ? 1 : 0, pen: sc.pen,
+    etapa: fim ? 'fim' : S.esg ? (S.esgEtapa || 'filtros') : etapaOf(S.screen), t: Math.round(clk.ms()), ini: S.t0 || Date.now(), at: Date.now(), rod: RANK.rod || 0};
   if (fim) r.tier = sc.tier;
   if (S.lost) r.lost = true;
+  if (S.esg) r.esg = true;
   return r;
 }
 let syncT = 0;
@@ -1989,23 +2154,65 @@ function syncScore(now){
   if (now) run(); else syncT = setTimeout(run, 500);
 }
 document.addEventListener('visibilitychange', () => { if (document.hidden) syncScore(true); });
-function bump(ok){
+function bump(d){
   const chip = $('#pts');
   if (chip){
     chip.querySelector('b').textContent = fmtP(ptsNow());
-    if (ok){
+    if (d){
       chip.classList.remove('pop'); void chip.offsetWidth; chip.classList.add('pop');
-      const f = document.createElement('span'); f.className = 'plus'; f.textContent = '+' + PTS; f.setAttribute('aria-hidden', 'true');
+      const f = document.createElement('span'); f.className = 'plus' + (d < 0 ? ' neg' : ''); f.textContent = (d > 0 ? '+' : '−') + Math.abs(d); f.setAttribute('aria-hidden', 'true');
       chip.appendChild(f); setTimeout(() => f.remove(), 950);
     }
   }
   syncScore();
 }
+/* No celular: avisa que a rodada vai encerrar, mostra a contagem ao lado dos pontos e fecha a partida no zero */
+function tickRound(){
+  if (TELA_ATIVA) return;
+  const st = roundState(), playing = !!(S.t0 && !S.t1 && S.ranked);
+  if (st === 'closing' && playing && S.fimSeen !== ROD.fim.ini){ S.fimSeen = ROD.fim.ini; save(); ralert(`⏱ <b>Reta final!</b> A rodada encerra em ${fmtT(fimAte() - Date.now())}. Termine sua partida.`); }
+  const pts = document.getElementById('pts');
+  let c = document.getElementById('rclock');
+  if (st === 'closing' && playing && pts){
+    if (!c){ pts.insertAdjacentHTML('afterend', '<span class="rclock" id="rclock" role="timer"></span>'); c = document.getElementById('rclock'); }
+    const left = fimAte() - Date.now();
+    c.textContent = '⏱ ' + fmtT(left); c.classList.toggle('hot', left < 15500);
+  } else if (c) c.remove();
+  if (st === 'closed' && playing) timeUp();
+}
+function timeUp(){
+  if (!S.t0 || S.t1) return;
+  clk.pause(); S.esg = true; S.esgEtapa = etapaOf(S.screen); S.t1 = Date.now(); save();
+  if (S.ranked){ Board.put(RANK.pid, record()).catch(() => { syncScore(); }); if (!RANK.done){ RANK.done = true; saveRank(); } }
+  go('timeup');
+}
 function startAttempt(){
   if (S.t0) return;
-  S.t0 = Date.now(); S.ranked = !RANK.done; save(); syncScore(true);
+  S.t0 = Date.now(); S.ck = {acc: 0, run: null};
+  S.ranked = !RANK.done && roundState() !== 'closed';
+  if (!RANK.done && !S.ranked) ralert('A rodada já foi encerrada: esta partida é só de treino.');
+  save(); syncScore(true);
 }
 refreshRodada();
+let TELA_ATIVA = false;
+setInterval(() => { if (!TELA_ATIVA && S.t0 && !S.t1 && S.ranked) refreshRodada(); }, Board.live ? 7000 : 2000);
+setInterval(tickRound, 500);
+
+/* ---------------- Tempo esgotado ---------------- */
+VIEWS.timeup = () => {
+  const sc = score();
+  app.innerHTML = `<section class="screen matchT timeup">
+    <div class="scroll">
+      <span class="eyebrow mt-in" style="color:#FFE7A8">Rodada encerrada</span>
+      <div class="tuclock mt-in d1" aria-hidden="true">${ico('clock', 70, 3)}</div>
+      <h1 class="bigscript">Tempo esgotado!</h1>
+      <p class="mt-in d2">O facilitador encerrou a rodada. O que você fez até aqui está valendo no ranking.</p>
+      <div class="tuscore mt-in d3"><strong>${fmtP(sc.pts)}</strong><span>pontos · ${sc.total} de ${TOTAL} acertos</span></div>
+    </div>
+    <div class="foot mt-in d3"><button class="btn light" id="ok">${ico('trophy', 20, 3.2)} Ver o ranking</button></div></section>`;
+  buzz([40, 60, 40]);
+  $('#ok').onclick = () => go('ranking');
+};
 
 /* ---------------- Nome para o ranking ---------------- */
 VIEWS.nome = () => {
@@ -2046,54 +2253,78 @@ VIEWS.ranking = () => {
   const draw = data => {
     const L = rankedList(data), F = fastList(data);
     const list = mode === 'time' ? F : L;
+    if (roundState() === 'closing'){
+      $('#lw').innerHTML = `<div class="frozen-note">${ico('lock', 34, 3.4)}<b>Placar congelado</b><span>As posições aparecem no telão quando a rodada encerrar, em <b>${fmtT(fimAte() - Date.now())}</b>.</span></div>`;
+      upd = listUpdater($('#lw'), {rowH: 64, max: 60, meId: RANK.pid, mode});
+      $('#mypos').textContent = 'Reta final: o placar está congelado.'; $('#rkinfo').textContent = '';
+      return;
+    }
+    if ($('#lw .frozen-note')) $('#lw').innerHTML = '';
     upd(list);
     const i = L.findIndex(r => r.id === RANK.pid), j = F.findIndex(r => r.id === RANK.pid);
     if (i >= 0){
       const r = L[i];
       $('#mypos').innerHTML = `Você está em <b>${i + 1}º</b> de ${L.length} em pontos · <b>${fmtP(r.pts)}</b> pts` +
-        (r.etapa === 'fim' ? `<small>${j >= 0 ? `Em “Mais rápidos”, você está em <b>${j + 1}º</b> · ${fmtT(r.t)}` : `Seu tempo: ${fmtT(r.t)}. Para entrar em “Mais rápidos” são precisos ${MIN_FAST} acertos.`}</small>` : '') +
+        (r.etapa === 'fim' && !r.lost ? `<small>${j >= 0 ? `Em “Mais rápidos”, você está em <b>${j + 1}º</b> · ${fmtT(r.t)} de decisão` : `Seu tempo de decisão: ${fmtT(r.t)}. Para entrar em “Mais rápidos” são precisos ${MIN_FAST} acertos.`}</small>` : '') +
         (S.ranked === false ? '<small>Sua partida de treino não entra no placar.</small>' : '');
     } else $('#mypos').textContent = S.ranked === false ? 'Esta partida foi de treino: só a primeira vale para o ranking.' : 'Você ainda não aparece no ranking.';
     $('#rkinfo').textContent = !Board.live ? 'Modo local: este ranking mostra só as partidas deste aparelho. Para juntar todos os participantes, o ranking online precisa estar configurado.'
-      : mode === 'time' ? `Só entra quem terminou com pelo menos ${MIN_FAST} acertos · atualiza sozinho a cada 5 segundos` : `Empate em pontos fica com quem terminou mais rápido · atualiza sozinho a cada 5 segundos`;
+      : mode === 'time' ? `Só entra quem terminou com pelo menos ${MIN_FAST} acertos · conta só o tempo de decisão` : `Empate em pontos fica com quem decidiu mais rápido · atualiza sozinho a cada 5 segundos`;
     if (!list.length) $('#lw').innerHTML = `<p class="help center">${mode === 'time' ? 'Ninguém terminou com acertos suficientes ainda.' : 'Ninguém no placar ainda.'}</p>`;
   };
   app.querySelectorAll('.rktabs .tab').forEach(t => t.onclick = () => setMode(t.dataset.m));
   setMode(mode);
-  cleanup = Board.watch(data => {
+  const stopW = Board.watch(data => {
     if (!data){ $('#rkinfo').textContent = 'Sem conexão com o ranking agora. Tentando de novo…'; return; }
     last = data; draw(data);
   }, {every: 5000});
-  $('#back').onclick = $('#back2').onclick = () => go('result');
+  /* acompanha a contagem e redesenha quando a rodada fecha */
+  let st0 = roundState();
+  const tk = setInterval(() => { const st = roundState(); if (last && (st !== st0 || st === 'closing')) draw(last); st0 = st; }, 1000);
+  cleanup = () => { stopW(); clearInterval(tk); };
+  const backTo = S.esg ? 'timeup' : S.t1 ? 'result' : null;
+  $('#back2').textContent = S.esg ? 'Voltar' : 'Voltar ao meu resultado';
+  $('#back').onclick = $('#back2').onclick = () => go(backTo || 'splash');
 };
 
 /* ---------------- Telão do facilitador: ?tela=ranking ---------------- */
 const DEFAULT_JOIN_URL = 'https://nicollymcosta26-cyber.github.io/match-perfeito-crm/';
 const DEFAULT_QR_SVG = '<svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" role="img" aria-label="QR Code para entrar na dinâmica"><rect width="37" height="37" fill="#fff"/><path fill="#003D9C" d="M2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM13 2h1v1h-1zM14 2h1v1h-1zM15 2h1v1h-1zM16 2h1v1h-1zM18 2h1v1h-1zM19 2h1v1h-1zM22 2h1v1h-1zM24 2h1v1h-1zM28 2h1v1h-1zM29 2h1v1h-1zM30 2h1v1h-1zM31 2h1v1h-1zM32 2h1v1h-1zM33 2h1v1h-1zM34 2h1v1h-1zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM13 3h1v1h-1zM20 3h1v1h-1zM22 3h1v1h-1zM28 3h1v1h-1zM34 3h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM8 4h1v1h-1zM10 4h1v1h-1zM11 4h1v1h-1zM14 4h1v1h-1zM15 4h1v1h-1zM18 4h1v1h-1zM19 4h1v1h-1zM20 4h1v1h-1zM21 4h1v1h-1zM22 4h1v1h-1zM23 4h1v1h-1zM24 4h1v1h-1zM25 4h1v1h-1zM28 4h1v1h-1zM30 4h1v1h-1zM31 4h1v1h-1zM32 4h1v1h-1zM34 4h1v1h-1zM2 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM11 5h1v1h-1zM12 5h1v1h-1zM14 5h1v1h-1zM19 5h1v1h-1zM20 5h1v1h-1zM22 5h1v1h-1zM23 5h1v1h-1zM25 5h1v1h-1zM28 5h1v1h-1zM30 5h1v1h-1zM31 5h1v1h-1zM32 5h1v1h-1zM34 5h1v1h-1zM2 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM17 6h1v1h-1zM19 6h1v1h-1zM20 6h1v1h-1zM24 6h1v1h-1zM28 6h1v1h-1zM30 6h1v1h-1zM31 6h1v1h-1zM32 6h1v1h-1zM34 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM13 7h1v1h-1zM14 7h1v1h-1zM15 7h1v1h-1zM16 7h1v1h-1zM17 7h1v1h-1zM19 7h1v1h-1zM22 7h1v1h-1zM24 7h1v1h-1zM26 7h1v1h-1zM28 7h1v1h-1zM34 7h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM26 8h1v1h-1zM28 8h1v1h-1zM29 8h1v1h-1zM30 8h1v1h-1zM31 8h1v1h-1zM32 8h1v1h-1zM33 8h1v1h-1zM34 8h1v1h-1zM12 9h1v1h-1zM14 9h1v1h-1zM17 9h1v1h-1zM18 9h1v1h-1zM25 9h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM11 10h1v1h-1zM12 10h1v1h-1zM13 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM25 10h1v1h-1zM26 10h1v1h-1zM29 10h1v1h-1zM32 10h1v1h-1zM34 10h1v1h-1zM2 11h1v1h-1zM6 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM12 11h1v1h-1zM13 11h1v1h-1zM15 11h1v1h-1zM17 11h1v1h-1zM18 11h1v1h-1zM19 11h1v1h-1zM20 11h1v1h-1zM21 11h1v1h-1zM22 11h1v1h-1zM23 11h1v1h-1zM24 11h1v1h-1zM25 11h1v1h-1zM26 11h1v1h-1zM28 11h1v1h-1zM31 11h1v1h-1zM34 11h1v1h-1zM2 12h1v1h-1zM3 12h1v1h-1zM5 12h1v1h-1zM8 12h1v1h-1zM11 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1zM17 12h1v1h-1zM21 12h1v1h-1zM22 12h1v1h-1zM23 12h1v1h-1zM25 12h1v1h-1zM31 12h1v1h-1zM32 12h1v1h-1zM34 12h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM6 13h1v1h-1zM9 13h1v1h-1zM11 13h1v1h-1zM13 13h1v1h-1zM15 13h1v1h-1zM18 13h1v1h-1zM20 13h1v1h-1zM22 13h1v1h-1zM24 13h1v1h-1zM25 13h1v1h-1zM26 13h1v1h-1zM27 13h1v1h-1zM28 13h1v1h-1zM29 13h1v1h-1zM30 13h1v1h-1zM31 13h1v1h-1zM2 14h1v1h-1zM3 14h1v1h-1zM4 14h1v1h-1zM7 14h1v1h-1zM8 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM14 14h1v1h-1zM15 14h1v1h-1zM17 14h1v1h-1zM18 14h1v1h-1zM20 14h1v1h-1zM21 14h1v1h-1zM22 14h1v1h-1zM26 14h1v1h-1zM27 14h1v1h-1zM28 14h1v1h-1zM29 14h1v1h-1zM34 14h1v1h-1zM3 15h1v1h-1zM4 15h1v1h-1zM5 15h1v1h-1zM9 15h1v1h-1zM10 15h1v1h-1zM11 15h1v1h-1zM12 15h1v1h-1zM13 15h1v1h-1zM14 15h1v1h-1zM21 15h1v1h-1zM22 15h1v1h-1zM23 15h1v1h-1zM24 15h1v1h-1zM25 15h1v1h-1zM26 15h1v1h-1zM28 15h1v1h-1zM29 15h1v1h-1zM32 15h1v1h-1zM33 15h1v1h-1zM34 15h1v1h-1zM5 16h1v1h-1zM7 16h1v1h-1zM8 16h1v1h-1zM9 16h1v1h-1zM12 16h1v1h-1zM13 16h1v1h-1zM15 16h1v1h-1zM17 16h1v1h-1zM21 16h1v1h-1zM23 16h1v1h-1zM24 16h1v1h-1zM25 16h1v1h-1zM26 16h1v1h-1zM30 16h1v1h-1zM31 16h1v1h-1zM32 16h1v1h-1zM34 16h1v1h-1zM2 17h1v1h-1zM3 17h1v1h-1zM6 17h1v1h-1zM7 17h1v1h-1zM9 17h1v1h-1zM10 17h1v1h-1zM11 17h1v1h-1zM12 17h1v1h-1zM15 17h1v1h-1zM16 17h1v1h-1zM17 17h1v1h-1zM18 17h1v1h-1zM22 17h1v1h-1zM24 17h1v1h-1zM26 17h1v1h-1zM27 17h1v1h-1zM28 17h1v1h-1zM30 17h1v1h-1zM31 17h1v1h-1zM3 18h1v1h-1zM7 18h1v1h-1zM8 18h1v1h-1zM9 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM12 18h1v1h-1zM14 18h1v1h-1zM15 18h1v1h-1zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM21 18h1v1h-1zM25 18h1v1h-1zM26 18h1v1h-1zM28 18h1v1h-1zM29 18h1v1h-1zM33 18h1v1h-1zM2 19h1v1h-1zM4 19h1v1h-1zM5 19h1v1h-1zM7 19h1v1h-1zM10 19h1v1h-1zM11 19h1v1h-1zM13 19h1v1h-1zM17 19h1v1h-1zM18 19h1v1h-1zM19 19h1v1h-1zM21 19h1v1h-1zM22 19h1v1h-1zM25 19h1v1h-1zM26 19h1v1h-1zM28 19h1v1h-1zM31 19h1v1h-1zM33 19h1v1h-1zM34 19h1v1h-1zM3 20h1v1h-1zM4 20h1v1h-1zM5 20h1v1h-1zM8 20h1v1h-1zM15 20h1v1h-1zM16 20h1v1h-1zM17 20h1v1h-1zM18 20h1v1h-1zM19 20h1v1h-1zM21 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM25 20h1v1h-1zM29 20h1v1h-1zM31 20h1v1h-1zM32 20h1v1h-1zM34 20h1v1h-1zM3 21h1v1h-1zM5 21h1v1h-1zM9 21h1v1h-1zM15 21h1v1h-1zM16 21h1v1h-1zM17 21h1v1h-1zM20 21h1v1h-1zM21 21h1v1h-1zM25 21h1v1h-1zM27 21h1v1h-1zM28 21h1v1h-1zM30 21h1v1h-1zM31 21h1v1h-1zM33 21h1v1h-1zM3 22h1v1h-1zM4 22h1v1h-1zM5 22h1v1h-1zM6 22h1v1h-1zM7 22h1v1h-1zM8 22h1v1h-1zM11 22h1v1h-1zM17 22h1v1h-1zM18 22h1v1h-1zM21 22h1v1h-1zM22 22h1v1h-1zM25 22h1v1h-1zM28 22h1v1h-1zM29 22h1v1h-1zM33 22h1v1h-1zM4 23h1v1h-1zM5 23h1v1h-1zM6 23h1v1h-1zM9 23h1v1h-1zM10 23h1v1h-1zM11 23h1v1h-1zM13 23h1v1h-1zM17 23h1v1h-1zM19 23h1v1h-1zM21 23h1v1h-1zM22 23h1v1h-1zM23 23h1v1h-1zM25 23h1v1h-1zM26 23h1v1h-1zM28 23h1v1h-1zM29 23h1v1h-1zM31 23h1v1h-1zM34 23h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM7 24h1v1h-1zM8 24h1v1h-1zM10 24h1v1h-1zM11 24h1v1h-1zM13 24h1v1h-1zM14 24h1v1h-1zM15 24h1v1h-1zM16 24h1v1h-1zM17 24h1v1h-1zM19 24h1v1h-1zM21 24h1v1h-1zM22 24h1v1h-1zM23 24h1v1h-1zM25 24h1v1h-1zM29 24h1v1h-1zM32 24h1v1h-1zM34 24h1v1h-1zM5 25h1v1h-1zM9 25h1v1h-1zM14 25h1v1h-1zM18 25h1v1h-1zM20 25h1v1h-1zM21 25h1v1h-1zM22 25h1v1h-1zM24 25h1v1h-1zM28 25h1v1h-1zM29 25h1v1h-1zM30 25h1v1h-1zM31 25h1v1h-1zM33 25h1v1h-1zM34 25h1v1h-1zM2 26h1v1h-1zM3 26h1v1h-1zM4 26h1v1h-1zM5 26h1v1h-1zM6 26h1v1h-1zM8 26h1v1h-1zM9 26h1v1h-1zM12 26h1v1h-1zM13 26h1v1h-1zM18 26h1v1h-1zM21 26h1v1h-1zM25 26h1v1h-1zM26 26h1v1h-1zM27 26h1v1h-1zM28 26h1v1h-1zM29 26h1v1h-1zM30 26h1v1h-1zM31 26h1v1h-1zM33 26h1v1h-1zM10 27h1v1h-1zM11 27h1v1h-1zM13 27h1v1h-1zM17 27h1v1h-1zM18 27h1v1h-1zM21 27h1v1h-1zM22 27h1v1h-1zM26 27h1v1h-1zM30 27h1v1h-1zM34 27h1v1h-1zM2 28h1v1h-1zM3 28h1v1h-1zM4 28h1v1h-1zM5 28h1v1h-1zM6 28h1v1h-1zM7 28h1v1h-1zM8 28h1v1h-1zM10 28h1v1h-1zM11 28h1v1h-1zM13 28h1v1h-1zM16 28h1v1h-1zM17 28h1v1h-1zM20 28h1v1h-1zM21 28h1v1h-1zM23 28h1v1h-1zM26 28h1v1h-1zM28 28h1v1h-1zM30 28h1v1h-1zM31 28h1v1h-1zM32 28h1v1h-1zM34 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM12 29h1v1h-1zM14 29h1v1h-1zM15 29h1v1h-1zM16 29h1v1h-1zM20 29h1v1h-1zM21 29h1v1h-1zM22 29h1v1h-1zM24 29h1v1h-1zM25 29h1v1h-1zM26 29h1v1h-1zM30 29h1v1h-1zM31 29h1v1h-1zM33 29h1v1h-1zM34 29h1v1h-1zM2 30h1v1h-1zM4 30h1v1h-1zM5 30h1v1h-1zM6 30h1v1h-1zM8 30h1v1h-1zM12 30h1v1h-1zM13 30h1v1h-1zM14 30h1v1h-1zM16 30h1v1h-1zM18 30h1v1h-1zM22 30h1v1h-1zM25 30h1v1h-1zM26 30h1v1h-1zM27 30h1v1h-1zM28 30h1v1h-1zM29 30h1v1h-1zM30 30h1v1h-1zM34 30h1v1h-1zM2 31h1v1h-1zM4 31h1v1h-1zM5 31h1v1h-1zM6 31h1v1h-1zM8 31h1v1h-1zM11 31h1v1h-1zM17 31h1v1h-1zM18 31h1v1h-1zM20 31h1v1h-1zM21 31h1v1h-1zM22 31h1v1h-1zM24 31h1v1h-1zM25 31h1v1h-1zM27 31h1v1h-1zM29 31h1v1h-1zM30 31h1v1h-1zM33 31h1v1h-1zM34 31h1v1h-1zM2 32h1v1h-1zM4 32h1v1h-1zM5 32h1v1h-1zM6 32h1v1h-1zM8 32h1v1h-1zM10 32h1v1h-1zM11 32h1v1h-1zM12 32h1v1h-1zM13 32h1v1h-1zM14 32h1v1h-1zM15 32h1v1h-1zM16 32h1v1h-1zM17 32h1v1h-1zM18 32h1v1h-1zM20 32h1v1h-1zM21 32h1v1h-1zM22 32h1v1h-1zM24 32h1v1h-1zM25 32h1v1h-1zM27 32h1v1h-1zM29 32h1v1h-1zM30 32h1v1h-1zM31 32h1v1h-1zM33 32h1v1h-1zM34 32h1v1h-1zM2 33h1v1h-1zM8 33h1v1h-1zM11 33h1v1h-1zM17 33h1v1h-1zM20 33h1v1h-1zM21 33h1v1h-1zM24 33h1v1h-1zM26 33h1v1h-1zM27 33h1v1h-1zM28 33h1v1h-1zM29 33h1v1h-1zM30 33h1v1h-1zM2 34h1v1h-1zM3 34h1v1h-1zM4 34h1v1h-1zM5 34h1v1h-1zM6 34h1v1h-1zM7 34h1v1h-1zM8 34h1v1h-1zM10 34h1v1h-1zM15 34h1v1h-1zM17 34h1v1h-1zM21 34h1v1h-1zM22 34h1v1h-1zM26 34h1v1h-1zM28 34h1v1h-1zM29 34h1v1h-1zM30 34h1v1h-1zM31 34h1v1h-1zM34 34h1v1h-1z"/></svg>';
+/* Pódio: cada degrau pode ser desenhado vazio (para a revelação) ou com a pessoa */
+function podInner(r, k, crown = k === 0){
+  return `${crown ? '<span class="crown" aria-hidden="true">👑</span>' : ''}${r ? `<span class="pfw"><span class="pf">${faceOf(r)}</span><span class="pmedal" aria-hidden="true">${['🥇', '🥈', '🥉'][k]}</span></span><b>${esc(r.nome)}</b><span class="pp">${fmtP(r.pts)} pts${r.etapa === 'fim' ? ' · ' + fmtT(r.t) : ''}</span>` : `<span class="pf empty">?</span><b>&nbsp;</b><span class="pp">&nbsp;</span>`}<div class="step">${k + 1}º</div>`;
+}
 function podiumHTML(L, big){
-  return [1, 0, 2].map(k => {
-    const r = L[k];
-    return `<div class="pod p${k + 1}${big ? ' big' : ''}">${k === 0 ? '<span class="crown" aria-hidden="true">👑</span>' : ''}${r ? `<span class="pfw"><span class="pf">${faceOf(r)}</span><span class="pmedal" aria-hidden="true">${['🥇', '🥈', '🥉'][k]}</span></span><b>${esc(r.nome)}</b><span class="pp">${fmtP(r.pts)} pts${r.etapa === 'fim' ? ' · ' + fmtT(r.t) : ''}</span>` : `<span class="pf empty">?</span><b>&nbsp;</b><span class="pp">&nbsp;</span>`}<div class="step">${k + 1}º</div></div>`;
-  }).join('');
+  return [1, 0, 2].map(k => `<div class="pod p${k + 1}${big ? ' big' : ''}" data-k="${k}">${podInner(L[k], k)}</div>`).join('');
 }
 function fastHTML(F){
   if (!F.length) return `<p class="fempty">Ninguém terminou com ${MIN_FAST}+ acertos ainda.</p>`;
   return F.slice(0, 3).map((r, i) => `<div class="frow"><span class="fpos">${i + 1}º</span><span class="rface">${faceOf(r)}</span><span class="fname"><b>${esc(r.nome)}</b><small>${fmtP(r.pts)} pts</small></span><span class="ftime">${fmtT(r.t)}</span></div>`).join('');
 }
+const confettiHTML = (n = 70) => {
+  const cols = ['#FFD36E', '#00C2D7', '#FF6FA8', '#FFFFFF', '#7FB2FF', '#7BD88F'];
+  let conf = '';
+  for (let i = 0; i < n; i++) conf += `<i style="left:${(i * 13.7) % 100}%;background:${cols[i % cols.length]};animation-delay:-${((i * .37) % 4).toFixed(2)}s;animation-duration:${(3 + (i % 5) * .5).toFixed(1)}s"></i>`;
+  return `<div class="confetti" aria-hidden="true">${conf}</div>`;
+};
 VIEWS.board = () => {
   document.body.classList.add('wide');
   document.title = 'Ranking · Em Busca do Match Perfeito';
   const joinUrl = location.origin + location.pathname.replace(/index\.html$/, '') + (SALA !== 'principal' ? `?sala=${encodeURIComponent(SALA)}` : '');
   app.innerHTML = `<section class="screen board">${floaters(18, 5)}
     <header class="bhead"><div class="blogo">${LOGO}</div>
-      <div class="bstats"><span class="live big"><i class="livedot"></i> AO VIVO</span><span id="stn">0 participantes</span><span id="stp">0 jogando</span><span id="stf">0 terminaram</span></div></header>
+      <div class="bstats"><span class="live big" id="blive"><i class="livedot"></i> AO VIVO</span><span id="stn">0 participantes</span><span id="stp">0 jogando</span><span id="stf">0 terminaram</span><span class="hearts" id="sth" hidden></span></div></header>
+    <div class="bfreeze" id="bfz" hidden>
+      <div class="fzl"><span class="eyebrow">Reta final</span><h1>Placar congelado</h1><p>As posições ficam em segredo até o fim da contagem. Quem ainda está jogando, corre!</p><div class="fzclock" id="fzc" role="timer">0:00</div></div>
+      <div class="fzr"><h3>Ainda jogando <b id="fzn">0</b></h3><div class="fzchips" id="fzp"></div><p class="fzdone"><b id="fzd">0</b> já terminaram</p></div>
+    </div>
     <div class="bmain">
       <div class="bpod"><h2>${ico('trophy', 30, 3)} Top 3</h2><div class="podium" id="pod">${podiumHTML([])}</div></div>
       <div class="bcol"><h2>Todos os participantes <small id="blc"></small></h2>
         <div class="blist" id="bl"><div class="lwrap" id="lw"></div><p class="bempty" id="bempty">Aguardando participantes… Aponte a câmera para o QR Code e entre na dinâmica.</p></div></div>
       <aside class="bside">
         <div class="bjoin" id="bj"><div id="qr"></div><p>Aponte a câmera<br>e dê match!</p>${SALA !== 'principal' ? `<small>Sala <b>${esc(SALA)}</b></small>` : ''}</div>
-        <div class="bfast"><h3>${ico('bolt', 22, 3.2)} Mais rápidos</h3><div id="fast">${fastHTML([])}</div><small>Quem terminou com ${MIN_FAST}+ acertos no menor tempo</small></div>
+        <div class="bfast"><h3>${ico('bolt', 22, 3.2)} Mais rápidos</h3><div id="fast">${fastHTML([])}</div><small>Quem terminou com ${MIN_FAST}+ acertos no menor tempo de decisão</small></div>
       </aside>
     </div>
     <footer class="bfoot"><span id="binfo">${Board.live ? 'Conectando ao placar…' : 'Modo local: mostra só as partidas deste aparelho. Configure o Firebase para juntar todos.'}</span><button class="btn light small" id="reveal">${ico('trophy', 20, 3.2)} Revelar vencedores</button></footer>
@@ -2102,6 +2333,7 @@ VIEWS.board = () => {
   else loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js')
     .then(() => { new QRCode($('#qr'), {text: joinUrl, width: 480, height: 480, colorDark: '#003D9C', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M}); })
     .catch(() => $('#bj').classList.add('noqr'));
+  const scr = app.querySelector('.screen.board');
   /* Lista completa: as linhas encolhem conforme entra gente; se ainda não couber, a lista rola sozinha */
   const bl = $('#bl'), lw = $('#lw');
   const rowH = n => Math.round(Math.max(46, Math.min(Math.max(54, Math.min(74, innerHeight * .068)), (bl.clientHeight || 600) / Math.max(1, n))));
@@ -2120,44 +2352,102 @@ VIEWS.board = () => {
     raf = requestAnimationFrame(roll);
   };
   raf = requestAnimationFrame(roll);
-  let L = [], F = [], pk = '', fk = '';
-  const stopWatch = Board.watch(data => {
-    if (!data){ $('#binfo').textContent = 'Reconectando ao placar…'; return; }
-    L = rankedList(data); F = fastList(data);
-    const playing = L.filter(r => r.etapa !== 'fim').length;
+  /* FINAL: retrato do placar tirado quando a contagem zera; depois disso o telão não muda mais */
+  let L = [], F = [], pk = '', fk = '', lastData = null, FINAL = null, FF = [], sawClosing = false, hearts = 0, liveMode = '';
+  const setLive = m => {
+    if (m === liveMode) return; liveMode = m;
+    const b = $('#blive');
+    b.className = 'live big' + (m === 'closing' ? ' closing' : m === 'final' ? ' final' : '');
+    b.innerHTML = m === 'closing' ? '⏱ RETA FINAL' : m === 'final' ? '🏁 RESULTADO FINAL' : '<i class="livedot"></i> AO VIVO';
+  };
+  const apply = data => {
+    if (data) lastData = data;
+    if (!lastData) return;
+    L = FINAL || rankedList(lastData); F = FINAL ? FF : fastList(lastData);
+    const playing = L.filter(r => r.etapa !== 'fim' && !r.esg);
     $('#stn').textContent = `${L.length} participante${L.length === 1 ? '' : 's'}`;
-    $('#stp').textContent = `${playing} jogando`;
-    $('#stf').textContent = `${L.length - playing} terminaram`;
-    const k = L.slice(0, 3).map(r => `${r.id}:${r.pts}:${r.etapa}:${r.nome}`).join('|');
-    if (k !== pk){ pk = k; $('#pod').innerHTML = podiumHTML(L); }
+    $('#stp').textContent = FINAL ? `${L.filter(r => r.esg).length} no tempo esgotado` : `${playing.length} jogando`;
+    $('#stf').textContent = `${L.filter(r => r.etapa === 'fim').length} terminaram`;
+    const lostN = L.filter(r => r.lost).length, sth = $('#sth');
+    sth.hidden = !lostN;
+    sth.innerHTML = `💔 <b>${lostN}</b> ${lostN === 1 ? 'deixou' : 'deixaram'} a Helena passar`;
+    if (lostN > hearts){ sth.classList.remove('pop'); void sth.offsetWidth; sth.classList.add('pop'); }
+    hearts = lostN;
+    const W = L.filter(r => !r.lost);
+    const k = W.slice(0, 3).map(r => `${r.id}:${r.pts}:${r.etapa}:${r.nome}:${r.t}`).join('|');
+    if (k !== pk){ pk = k; $('#pod').innerHTML = podiumHTML(W); }
     const k2 = F.slice(0, 3).map(r => `${r.id}:${r.t}:${r.nome}`).join('|');
     if (k2 !== fk){ fk = k2; $('#fast').innerHTML = fastHTML(F); }
     upd(L);
     bl.classList.toggle('compact', L.length * 54 > (bl.clientHeight || 600));
     $('#blc').textContent = L.length ? `${L.length} no total` : '';
     $('#bempty').hidden = L.length > 0;
-    $('#binfo').textContent = Board.live ? `${SALA !== 'principal' ? 'Sala ' + SALA + ' · ' : ''}Empate em pontos fica com quem terminou mais rápido · atualizado às ${new Date().toLocaleTimeString('pt-BR')}` : 'Modo local: mostra só as partidas deste aparelho. Configure o Firebase para juntar todos.';
+    /* reta final: só os nomes de quem ainda joga, sem posição */
+    $('#fzn').textContent = playing.length;
+    $('#fzd').textContent = L.length - playing.length;
+    $('#fzp').innerHTML = playing.length ? playing.slice().sort((a, b) => (a.ini || 0) - (b.ini || 0)).map(r => `<span class="fzchip"><span class="rface">${faceOf(r)}</span>${esc(r.nome)}<small>${ETAPA[r.etapa] || 'início'}</small></span>`).join('') : '<p class="fzall">Todo mundo terminou! 🎉</p>';
+    $('#binfo').textContent = FINAL ? `Resultado final da rodada${SALA !== 'principal' ? ' · sala ' + SALA : ''} · empate em pontos fica com quem decidiu mais rápido`
+      : Board.live ? `${SALA !== 'principal' ? 'Sala ' + SALA + ' · ' : ''}Empate em pontos fica com quem decidiu mais rápido · atualizado às ${new Date().toLocaleTimeString('pt-BR')}` : 'Modo local: mostra só as partidas deste aparelho. Configure o Firebase para juntar todos.';
+  };
+  const stopWatch = Board.watch(data => {
+    if (!data){ $('#binfo').textContent = 'Reconectando ao placar…'; return; }
+    apply(data);
   }, {stream: true, every: 3000});
-  cleanup = () => { stopWatch(); cancelAnimationFrame(raf); };
+  /* Reta final e fechamento: o relógio do telão manda */
+  const tick = () => {
+    const st = roundState();
+    if (st === 'closing'){
+      sawClosing = true;
+      if (FINAL){ FINAL = null; apply(); }
+      scr.classList.add('frozen'); $('#bfz').hidden = false; setLive('closing');
+      const left = fimAte() - Date.now();
+      $('#fzc').textContent = fmtT(left); $('#fzc').classList.toggle('hot', left < 10500);
+    } else if (st === 'closed'){
+      if (!FINAL && lastData && Date.now() >= fimAte() + FINAL_GRACE){
+        FINAL = rankedList(lastData); FF = fastList(lastData); pk = fk = ''; apply();
+        scr.classList.remove('frozen'); $('#bfz').hidden = true; setLive('final');
+        if (sawClosing){ sawClosing = false; revealSeq(); }
+      } else if (!FINAL){ $('#fzc').textContent = '0:00'; $('#fzc').classList.add('hot'); }
+    } else {
+      if (FINAL || scr.classList.contains('frozen')){ FINAL = null; sawClosing = false; scr.classList.remove('frozen'); $('#bfz').hidden = true; pk = fk = ''; apply(); }
+      setLive('live');
+    }
+  };
+  const tk = setInterval(tick, 250); tick();
+  cleanup = () => { stopWatch(); cancelAnimationFrame(raf); clearInterval(tk); };
   /* Quando o telão está embutido num slide, a apresentação manda revelar ou fechar o pódio */
   window.addEventListener('message', e => {
     const c = e.data && e.data.mp;
     if (c === 'reveal' && !document.querySelector('.reveal')) $('#reveal').click();
     else if (c === 'hide'){ const r = document.querySelector('.reveal'); if (r) r.remove(); }
   });
-  $('#reveal').onclick = () => {
-    const d = document.createElement('div'); d.className = 'reveal';
-    let conf = '';
-    const cols = ['#FFD36E', '#00C2D7', '#FF6FA8', '#FFFFFF', '#7FB2FF', '#7BD88F'];
-    for (let i = 0; i < 70; i++) conf += `<i style="left:${(i * 13.7) % 100}%;background:${cols[i % cols.length]};animation-delay:-${((i * .37) % 4).toFixed(2)}s;animation-duration:${(3 + (i % 5) * .5).toFixed(1)}s"></i>`;
-    const f = F[0];
-    d.innerHTML = `<div class="confetti" aria-hidden="true">${conf}</div><span class="eyebrow">Em busca do match perfeito</span><h1>Temos vencedores!</h1>
-      <div class="podium">${podiumHTML(L, true)}</div>
-      <div class="fastwin">${ico('bolt', 28, 3.2)}<span>Mais rápido</span>${f ? `<b>${esc(f.nome)}</b><em>${fmtT(f.t)} · ${fmtP(f.pts)} pts</em>` : `<b>—</b><em>ninguém terminou com ${MIN_FAST}+ acertos</em>`}</div>
-      <button class="btn light small" id="closeR">Voltar ao placar</button>`;
-    app.querySelector('.screen').appendChild(d);
+  /* Revelação com suspense: 3º, 2º e, por último, o 1º lugar */
+  const revealSeq = () => {
+    const old = document.querySelector('.reveal'); if (old) old.remove();
+    const W = L.filter(r => !r.lost).slice(0, 3), f = F[0];
+    const d = document.createElement('div'); d.className = 'reveal seq';
+    d.innerHTML = `<span class="eyebrow">Em busca do match perfeito</span><h1 id="rvh">E o pódio é…</h1>
+      <div class="podium">${[1, 0, 2].map(k => `<div class="pod p${k + 1} big" data-k="${k}">${podInner(null, k, false)}</div>`).join('')}</div>
+      <div class="fastwin" id="rvf" hidden>${ico('bolt', 28, 3.2)}<span>Mais rápido</span>${f ? `<b>${esc(f.nome)}</b><em>${fmtT(f.t)} · ${fmtP(f.pts)} pts</em>` : `<b>—</b><em>ninguém terminou com ${MIN_FAST}+ acertos</em>`}</div>
+      <div class="rvact"><button class="btn light small" id="closeR">Voltar ao placar</button></div>`;
+    scr.appendChild(d);
     d.querySelector('#closeR').onclick = () => d.remove();
+    const say = t => { const h = d.querySelector('#rvh'); h.textContent = t; h.classList.remove('in'); void h.offsetWidth; h.classList.add('in'); };
+    const pod = k => d.querySelector(`.pod[data-k="${k}"]`);
+    const steps = [[2, 'Em 3º lugar…', 1900], [1, 'Em 2º lugar…', 2300], [0, 'E o match perfeito é…', 3200]];
+    let t = 1100;
+    steps.forEach(([k, txt, wait]) => {
+      setTimeout(() => { if (!d.isConnected) return; say(txt); pod(k).classList.add('drum'); }, t);
+      t += wait;
+      setTimeout(() => {
+        if (!d.isConnected) return;
+        const p = pod(k); p.classList.remove('drum'); p.innerHTML = podInner(W[k], k); p.classList.add('show');
+        if (k === 0){ say('Temos vencedores!'); d.insertAdjacentHTML('afterbegin', confettiHTML()); d.querySelector('#rvf').hidden = false; d.classList.add('done'); }
+      }, t);
+      t += 700;
+    });
   };
+  $('#reveal').onclick = revealSeq;
 };
 
 /* ---------------- Área do administrador: ?tela=admin ---------------- */
@@ -2169,10 +2459,11 @@ async function sha256(t){
   return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join('');
 }
 const TIER_L = {match: 'Deu Match', quase: 'Quase lá', ghost: 'Ghosting'};
-/* Ranking do admin: mais acertos; empate, menor tempo de conclusão (quem já terminou fica à frente) */
-const adminList = data => validRecs(data).sort((a, b) =>
-  (a.lost ? 1 : 0) - (b.lost ? 1 : 0) || (b.acertos || 0) - (a.acertos || 0) || (a.etapa === 'fim' ? 0 : 1) - (b.etapa === 'fim' ? 0 : 1) || (a.t || 0) - (b.t || 0));
+/* Ranking do admin: o mesmo critério do telão (mais pontos; empate, menor tempo de decisão; quem perdeu a Helena vai para o fim) */
+const adminList = data => rankedList(data);
 const fmtHora = ms => ms ? new Date(ms).toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'}) : '—';
+const extrasOf = r => [r.sup ? `⭐ +${PTS.sup}` : '', r.pen ? `🚫 −${r.pen * PTS.pen}` : ''].filter(Boolean).join(' ');
+const situOf = r => r.lost ? '💔 Perdeu a Helena' : r.esg ? `⏱ Tempo esgotado · ${ETAPA[r.etapa] || ''}` : r.etapa === 'fim' ? `${TIER_E[r.tier] || '✓'} ${TIER_L[r.tier] || 'Terminou'}` : '';
 
 VIEWS.adminGate = () => {
   document.body.classList.add('wide', 'adm-body');
@@ -2197,6 +2488,17 @@ VIEWS.adminGate = () => {
   setTimeout(() => $('#pin').focus(), 50);
 };
 
+/* Confere se as regras do Firebase aceitam a pontuação nova (até MAX_PTS): grava um registro de teste e apaga em seguida */
+async function checkRules(){
+  if (!Board.live) return true;
+  const url = `${Board.base()}/zzteste.json`;
+  try {
+    const r = await fetch(url, {method: 'PUT', body: JSON.stringify({nome: 'teste de regras', pts: MAX_PTS, acertos: 0, rod: -1, etapa: 'fim', sup: 1, pen: 0, esg: true, t: 0})});
+    fetch(url, {method: 'DELETE'}).catch(() => {});
+    return r.ok;
+  } catch (e) { return true; } /* sem rede: não dá para afirmar nada */
+}
+
 VIEWS.admin = () => {
   let unlocked = false;
   try { unlocked = sessionStorage.getItem(ADMIN_KEY) === '1'; } catch (e) {}
@@ -2207,105 +2509,150 @@ VIEWS.admin = () => {
   app.innerHTML = `<section class="screen adm">
     <header class="admhead">
       <div class="admlogo">${LOGO}</div>
-      <div class="admtitle"><span class="eyebrow">Área do administrador</span><h1>Ranking ao vivo</h1><small>Sala <b>${esc(SALA)}</b> · critério: mais acertos; empate, menor tempo de conclusão</small></div>
+      <div class="admtitle"><span class="eyebrow">Área do administrador</span><h1>Ranking ao vivo</h1><small>Sala <b>${esc(SALA)}</b> · critério: mais pontos; empate, menor tempo de decisão</small></div>
       <div class="admact"><span class="live" id="alive"><i class="livedot"></i> ao vivo</span>
+        <span class="rstate" id="rstate" hidden></span>
         <a class="btn outline small" href="${esc(telao)}" target="_blank" rel="noopener">${ico('trophy', 18, 3.2)} Abrir telão</a>
         <button class="btn outline small" id="csv">${ico('sheet', 18, 3.2)} Exportar CSV</button>
+        <button class="btn small warnfill" id="close">${ico('clock', 18, 3.2)} Encerrar rodada</button>
         <button class="btn outline small danger" id="reset">${ico('dice', 18, 3.2)} Zerar ranking</button>
         <button class="btn outline small" id="out">Sair</button></div>
     </header>
     <div class="admscroll">
       ${Board.live ? '' : '<p class="admwarn">Modo local: o painel mostra só as partidas feitas neste navegador. Configure o Firebase para acompanhar todos os participantes.</p>'}
+      <p class="admwarn bad" id="rulewarn" hidden>⚠️ As regras do Firebase ainda são as antigas e vão recusar as pontuações novas (até ${fmtP(MAX_PTS)} pontos) e o encerramento da rodada. Atualize as regras em Firebase › Realtime Database › Regras antes da dinâmica.</p>
       <div class="kpis">
         <div><span>Participantes</span><strong id="k1">0</strong></div>
         <div><span>Jogando agora</span><strong id="k2">0</strong></div>
         <div><span>Terminaram</span><strong id="k3">0</strong></div>
-        <div><span>Média de acertos</span><strong id="k4">—</strong></div>
-        <div><span>Melhor tempo</span><strong id="k5">—</strong></div>
+        <div><span>Média de pontos</span><strong id="k4">—</strong></div>
+        <div><span>Perderam a Helena</span><strong id="k5">0</strong></div>
       </div>
-      <h2 class="admh2">${ico('trophy', 24, 3.2)} Top 3 vencedores <small>entre quem já terminou</small></h2>
+      <h2 class="admh2">${ico('trophy', 24, 3.2)} Top 3 <small id="t3s">ao vivo</small></h2>
       <div class="top3" id="top3"></div>
       <div class="admbar"><h2 class="admh2">Classificação geral <small id="cnt"></small></h2><input id="q" type="search" placeholder="Buscar participante" aria-label="Buscar participante"></div>
       <div class="admtable"><table>
-        <thead><tr><th>#</th><th>Participante</th><th>Acertos</th><th>Tempo</th><th>Situação</th><th class="num">Filtros</th><th class="num">Perfis</th><th class="num">Chat</th><th>Início</th></tr></thead>
-        <tbody id="tb"><tr><td colspan="9" class="empty">Aguardando participantes…</td></tr></tbody>
+        <thead><tr><th>#</th><th>Participante</th><th class="num">Pontos</th><th>Acertos</th><th>Tempo de decisão</th><th>Situação</th><th>Extras</th><th class="num">Filtros</th><th class="num">Perfis</th><th class="num">Chat</th><th>Início</th></tr></thead>
+        <tbody id="tb"><tr><td colspan="11" class="empty">Aguardando participantes…</td></tr></tbody>
       </table></div>
       <p class="admfoot" id="afoot"></p>
     </div></section>`;
-  let L = [], prev = new Map(), q = '', lastData = {};
+  let L = [], prev = new Map(), q = '', lastData = {}, FINAL = null;
   const medal = ['🥇', '🥈', '🥉'];
   const draw = () => {
-    const fin = L.filter(r => r.etapa === 'fim');
+    const fin = L.filter(r => r.etapa === 'fim'), playing = L.filter(r => r.etapa !== 'fim' && !r.esg);
     $('#k1').textContent = L.length;
-    $('#k2').textContent = L.length - fin.length;
+    $('#k2').textContent = playing.length;
     $('#k3').textContent = fin.length;
-    $('#k4').textContent = fin.length ? (fin.reduce((n, r) => n + (r.acertos || 0), 0) / fin.length).toLocaleString('pt-BR', {maximumFractionDigits: 1}) + ` / ${TOTAL}` : '—';
-    $('#k5').textContent = fin.length ? fmtT(Math.min(...fin.map(r => r.t || 0))) : '—';
-    const top = fin.filter(r => !r.lost).slice(0, 3);
-    $('#top3').innerHTML = [0, 1, 2].map(i => { const r = top[i]; return `<div class="tcard t${i + 1}${r ? '' : ' empty'}"><span class="medal">${medal[i]}</span>${r ? `<span class="rface big">${faceOf(r)}</span><div><b>${esc(r.nome)}</b><span>${r.acertos}/${TOTAL} acertos · ${fmtT(r.t)}</span><em>${r.lost ? '💔 Perdeu a Helena' : `${TIER_E[r.tier] || ''} ${TIER_L[r.tier] || ''}`}</em></div>` : `<div><b>${i + 1}º lugar</b><span>Aguardando alguém terminar</span></div>`}</div>`; }).join('');
+    $('#k4').textContent = L.length ? fmtP(Math.round(L.reduce((n, r) => n + (r.pts || 0), 0) / L.length)) : '—';
+    $('#k5').textContent = L.filter(r => r.lost).length;
+    const top = L.filter(r => !r.lost).slice(0, 3);
+    $('#t3s').textContent = FINAL ? 'resultado final' : roundState() === 'closing' ? 'reta final · o telão está com o placar congelado' : 'ao vivo';
+    $('#top3').innerHTML = [0, 1, 2].map(i => { const r = top[i]; return `<div class="tcard t${i + 1}${r ? '' : ' empty'}"><span class="medal">${medal[i]}</span>${r ? `<span class="rface big">${faceOf(r)}</span><div><b>${esc(r.nome)}</b><span>${fmtP(r.pts)} pts · ${r.acertos}/${TOTAL} acertos · ${fmtT(r.t)}</span><em>${situOf(r) || '<i class="livedot"></i> jogando'}${r.sup ? ' · ⭐' : ''}</em></div>` : `<div><b>${i + 1}º lugar</b><span>Aguardando participantes</span></div>`}</div>`; }).join('');
     const shown = q ? L.filter(r => r.nome.toLowerCase().includes(q)) : L;
     $('#cnt').textContent = `${L.length} participante${L.length === 1 ? '' : 's'}${q ? ` · ${shown.length} na busca` : ''}`;
     const winners = new Set(top.map(r => r.id));
     $('#tb').innerHTML = shown.length ? shown.map(r => {
-      const pos = L.indexOf(r) + 1, changed = prev.has(r.id) && prev.get(r.id) !== `${r.acertos}|${r.etapa}`;
+      const pos = L.indexOf(r) + 1, changed = prev.has(r.id) && prev.get(r.id) !== `${r.pts}|${r.etapa}`;
       const pct = Math.round((r.acertos || 0) / TOTAL * 100);
       return `<tr class="${winners.has(r.id) ? 'win w' + (top.indexOf(r) + 1) : ''}${changed ? ' flash' : ''}">
         <td class="pos">${winners.has(r.id) ? medal[top.indexOf(r)] : pos + 'º'}</td>
         <td><span class="who"><span class="rface">${faceOf(r)}</span><b>${esc(r.nome)}</b></span></td>
+        <td class="num"><b>${fmtP(r.pts)}</b></td>
         <td><span class="acc"><b>${r.acertos || 0}</b>/${TOTAL}<i><u style="width:${pct}%"></u></i></span></td>
-        <td class="num">${r.etapa === 'fim' ? `<b>${fmtT(r.t)}</b>` : `<span class="muted">${fmtT(r.t)} até agora</span>`}</td>
-        <td>${r.etapa === 'fim' ? `<span class="tag done">${r.lost ? '💔 Perdeu a Helena' : `${TIER_E[r.tier] || '✓'} ${TIER_L[r.tier] || 'Terminou'}`}</span>` : `<span class="tag play"><i class="livedot"></i> ${ETAPA[r.etapa] || 'Início'}</span>`}</td>
+        <td class="num">${r.etapa === 'fim' || r.esg ? `<b>${fmtT(r.t)}</b>` : `<span class="muted">${fmtT(r.t)} até agora</span>`}</td>
+        <td>${situOf(r) ? `<span class="tag done">${situOf(r)}</span>` : `<span class="tag play"><i class="livedot"></i> ${ETAPA[r.etapa] || 'Início'}</span>`}</td>
+        <td class="xt">${extrasOf(r) || '<span class="muted">—</span>'}</td>
         <td class="num">${r.f ?? '—'}/${FILTERS.length}</td><td class="num">${r.p ?? '—'}/${PROFILES.length}</td><td class="num">${r.c ?? '—'}/${CHAT.length}</td>
         <td class="num muted">${fmtHora(r.ini)}</td></tr>`;
-    }).join('') : `<tr><td colspan="9" class="empty">${q ? 'Ninguém com esse nome.' : 'Aguardando participantes…'}</td></tr>`;
-    prev = new Map(L.map(r => [r.id, `${r.acertos}|${r.etapa}`]));
-    $('#afoot').textContent = `Atualizado às ${new Date().toLocaleTimeString('pt-BR')}${ROD.v ? ` · rodada iniciada às ${fmtHora(ROD.v)}` : ''}. Para começar uma turma nova, use “Zerar ranking” (exporte o CSV antes, se quiser guardar os resultados) ou outra sala no endereço (?sala=turma2).`;
+    }).join('') : `<tr><td colspan="11" class="empty">${q ? 'Ninguém com esse nome.' : 'Aguardando participantes…'}</td></tr>`;
+    prev = new Map(L.map(r => [r.id, `${r.pts}|${r.etapa}`]));
+    $('#afoot').textContent = `Atualizado às ${new Date().toLocaleTimeString('pt-BR')}${ROD.v ? ` · rodada iniciada às ${fmtHora(ROD.v)}` : ''}. Pontos: filtros e perfis 100, chat 200, super like na Helena +200, like em contato inválido −50. Para começar uma turma nova, use “Zerar ranking” (exporte o CSV antes, se quiser guardar os resultados) ou outra sala no endereço (?sala=turma2).`;
   };
-  cleanup = Board.watch(data => {
+  const relist = () => { L = FINAL || adminList(lastData); draw(); };
+  const stopW = Board.watch(data => {
     if (!data){ $('#alive').classList.add('off'); $('#alive').lastChild.textContent = ' reconectando'; return; }
     $('#alive').classList.remove('off'); $('#alive').lastChild.textContent = ' ao vivo';
-    lastData = data; L = adminList(data); draw();
+    lastData = data; relist();
   }, {stream: true, every: 3000});
+  /* Estado da rodada: contagem regressiva, fechamento e retrato final (o mesmo do telão) */
+  let st0 = '';
+  const tick = () => {
+    const st = roundState(), el = $('#rstate'), bc = $('#close');
+    if (st === 'closing'){ el.hidden = false; el.className = 'rstate closing'; el.textContent = `⏱ Encerra em ${fmtT(fimAte() - Date.now())}`; }
+    else if (st === 'closed'){
+      el.hidden = false; el.className = 'rstate closed'; el.textContent = `🏁 Rodada encerrada às ${fmtHora(ROD.fim.ini + ROD.fim.dur * 1000)}`;
+      if (!FINAL && Date.now() >= fimAte() + FINAL_GRACE){ FINAL = adminList(lastData); relist(); }
+    } else { el.hidden = true; if (FINAL){ FINAL = null; relist(); } }
+    bc.disabled = st !== 'open';
+    if (st !== st0){ st0 = st; draw(); }
+  };
+  const tk = setInterval(tick, 500); tick();
+  cleanup = () => { stopW(); clearInterval(tk); };
+  checkRules().then(ok => { const w = $('#rulewarn'); if (w) w.hidden = ok; });
   $('#q').oninput = e => { q = e.target.value.trim().toLowerCase(); draw(); };
   $('#out').onclick = () => { try { sessionStorage.removeItem(ADMIN_KEY); } catch (e) {} if (cleanup){ cleanup(); cleanup = null; } VIEWS.adminGate(); };
   const toast = msg => { const t = document.createElement('div'); t.className = 'admtoast'; t.setAttribute('role', 'status'); t.textContent = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 4200); };
-  $('#reset').onclick = () => {
+  /* Modal com senha, usado para encerrar e para zerar */
+  const pinModal = ({title, body, extra = '', okLabel, okClass, onOk}) => {
     const m = document.createElement('div'); m.className = 'admmodal';
     m.innerHTML = `<form class="rmcard" id="rf" role="dialog" aria-modal="true" aria-labelledby="rmt" autocomplete="off">
-      <h2 id="rmt">Zerar o ranking?</h2>
-      <p>Começa uma rodada nova na sala <b>${esc(SALA)}</b>: a classificação, o Top 3 e o telão ficam vazios, e quem já jogou pode jogar de novo valendo ponto.</p>
-      <p class="rmnote">Os resultados atuais saem do ranking. Se quiser guardar, exporte o CSV antes. <button type="button" class="linkbtn" id="rcsv">Exportar CSV agora</button></p>
+      <h2 id="rmt">${title}</h2>${body}${extra}
       <label class="field" for="rpin"><span>Senha do admin</span><input id="rpin" type="password" placeholder="Digite a senha para confirmar"></label>
       <p class="gerr" id="rerr" hidden></p>
-      <div class="rmact"><button type="button" class="btn outline small" id="rno">Cancelar</button><button type="submit" class="btn small dangerfill" id="rok">Zerar ranking</button></div>
+      <div class="rmact"><button type="button" class="btn outline small" id="rno">Cancelar</button><button type="submit" class="btn small ${okClass}" id="rok">${okLabel}</button></div>
     </form>`;
     document.body.appendChild(m);
     const close = () => m.remove();
     m.onclick = e => { if (e.target === m) close(); };
     m.querySelector('#rno').onclick = close;
-    m.querySelector('#rcsv').onclick = () => $('#csv').click();
     setTimeout(() => m.querySelector('#rpin').focus(), 50);
     m.querySelector('#rf').onsubmit = async e => {
       e.preventDefault();
       const pin = m.querySelector('#rpin').value.trim().toLowerCase(), err = m.querySelector('#rerr'), ok = m.querySelector('#rok');
       let good = false; try { good = (await sha256(pin)) === ADMIN_PIN_HASH; } catch (x) {}
       if (!good){ err.textContent = 'Senha incorreta. Confira e tente de novo.'; err.hidden = false; return; }
-      ok.disabled = true; ok.textContent = 'Zerando…';
-      try {
+      const label = ok.textContent; ok.disabled = true; ok.textContent = 'Aguarde…';
+      try { await onOk(pin, m); close(); }
+      catch (x) { ok.disabled = false; ok.textContent = label; err.textContent = x && x.userMsg || 'Não deu certo. Confira a conexão e se as regras do Firebase foram atualizadas, e tente de novo.'; err.hidden = false; }
+    };
+    return m;
+  };
+  $('#close').onclick = () => {
+    const playing = L.filter(r => r.etapa !== 'fim' && !r.esg).length;
+    const m = pinModal({
+      title: 'Encerrar a rodada?',
+      body: `<p>Começa a <b>reta final</b>: o telão congela as posições e mostra a contagem regressiva, e quem está jogando vê o aviso no celular. No zero, a partida de quem não terminou fecha com os pontos que já tem e o telão revela o pódio: 3º, 2º e 1º lugar.</p>`,
+      extra: `<div class="durs" role="radiogroup" aria-label="Tempo da contagem">${[[30, '30 s'], [60, '1 min'], [120, '2 min']].map(([v, l], i) => `<label><input type="radio" name="dur" value="${v}"${i === 1 ? ' checked' : ''}><span>${l}</span></label>`).join('')}</div>
+        <p class="rmnote">${playing ? `${playing} pessoa${playing > 1 ? 's ainda estão' : ' ainda está'} jogando.` : 'Ninguém está jogando agora.'} Deixe o telão aberto na tela do evento.</p>`,
+      okLabel: 'Começar contagem', okClass: 'warnfill',
+      onOk: async (pin, mm) => {
+        const dur = +mm.querySelector('input[name="dur"]:checked').value;
+        await Board.encerrar(pin, dur);
+        await refreshRodada();
+        toast(`Reta final! A rodada encerra em ${fmtT(dur * 1000)}.`);
+      }
+    });
+  };
+  $('#reset').onclick = () => {
+    const m = pinModal({
+      title: 'Zerar o ranking?',
+      body: `<p>Começa uma rodada nova na sala <b>${esc(SALA)}</b>: a classificação, o Top 3 e o telão ficam vazios, e quem já jogou pode jogar de novo valendo ponto.</p>`,
+      extra: `<p class="rmnote">Os resultados atuais saem do ranking. Se quiser guardar, exporte o CSV antes. <button type="button" class="linkbtn" id="rcsv">Exportar CSV agora</button></p>`,
+      okLabel: 'Zerar ranking', okClass: 'dangerfill',
+      onOk: async pin => {
         const v = await Board.novaRodada(pin);
         ROD.v = v; ROD.at = Date.now(); ROD.ready = true;
         await refreshRodada();
-        close(); L = adminList(lastData); prev = new Map(); draw();
+        FINAL = null; prev = new Map(); relist();
         toast(`Ranking zerado. Nova rodada começou às ${fmtHora(v)}.`);
-      } catch (x) {
-        ok.disabled = false; ok.textContent = 'Zerar ranking';
-        err.textContent = 'Não deu para zerar. Confira a conexão e se as regras do Firebase foram atualizadas, e tente de novo.'; err.hidden = false;
       }
-    };
+    });
+    m.querySelector('#rcsv').onclick = () => $('#csv').click();
   };
   $('#csv').onclick = () => {
-    const rows = [['Posição', 'Nome', 'Acertos', 'Pontos', 'Tempo', 'Situação', 'Resultado', 'Filtros', 'Perfis', 'Chat', 'Início']]
-      .concat(L.map((r, i) => [i + 1, r.nome, r.acertos, r.pts, fmtT(r.t), r.etapa === 'fim' ? 'Terminou' : 'Jogando · ' + (ETAPA[r.etapa] || ''), r.lost ? 'Perdeu a Helena' : TIER_L[r.tier] || '', r.f, r.p, r.c, fmtHora(r.ini)]));
+    const rows = [['Posição', 'Nome', 'Pontos', 'Acertos', 'Tempo de decisão', 'Situação', 'Resultado', 'Super like na Helena', 'Contatos inválidos', 'Filtros', 'Perfis', 'Chat', 'Início']]
+      .concat(L.map((r, i) => [i + 1, r.nome, r.pts, r.acertos, fmtT(r.t), r.lost ? 'Perdeu a Helena' : r.esg ? 'Tempo esgotado' : r.etapa === 'fim' ? 'Terminou' : 'Jogando · ' + (ETAPA[r.etapa] || ''), r.lost ? 'Perdeu a Helena' : TIER_L[r.tier] || '', r.sup ? 'Sim' : 'Não', r.pen || 0, r.f, r.p, r.c, fmtHora(r.ini)]));
     const csv = '﻿' + rows.map(r => r.map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(';')).join('\r\n');
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([csv], {type: 'text/csv;charset=utf-8'}));
@@ -2323,6 +2670,7 @@ else if (DEMO.startsWith('demo-res')){ S = fresh(); S.ans.f = FILTERS.map(q => q
   if (DEMO === 'demo-res-ghost'){ S.ans.f = FILTERS.map(q => (q.c + 1) % q.o.length); S.ans.p = PROFILES.map(() => true); S.ans.c = CHAT.map(q => (q.c + 1) % q.o.length); }
   S.screen = 'result'; }
 const TELA = (QS.get('tela') || '').toLowerCase() || ({'#ranking': 'ranking', '#admin': 'admin'})[location.hash] || '';
+TELA_ATIVA = TELA === 'ranking' || TELA === 'admin';
 if (TELA === 'ranking') VIEWS.board(); else if (TELA === 'admin') VIEWS.admin(); else render();
 })();
 </script>

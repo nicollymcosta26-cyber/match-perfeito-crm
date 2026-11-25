@@ -1128,7 +1128,7 @@ svg [data-step],.nv-row[data-step],.tcol[data-step],.net[data-step],.rain[data-s
 .podium span{width:46px;border-radius:10px 10px 4px 4px;display:grid;place-items:start center;padding-top:8px;font:800 22px/1 var(--display);color:var(--navy)}
 .podium .p1{height:84px;background:#8fdcff}.podium .p2{height:62px;background:#d6ecff}.podium .p3{height:48px;background:#bfe0f7}
 .wt b{display:block;font:800 38px/1.15 var(--display);letter-spacing:-.01em}
-.wc{display:flex;gap:12px;margin-top:12px}
+.wc{display:flex;flex-wrap:wrap;gap:10px 12px;margin-top:12px}
 .wc span{display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.12);font:700 21px/1 var(--body);color:#bfeeff}
 .wc span svg{fill:#8fdcff;font-size:22px}
 .fin-c .restart{margin-top:6px;display:inline-flex;align-items:center;gap:12px;padding:16px 28px;border:0;border-radius:999px;background:#fff;color:var(--brand);font:800 24px/1 var(--body);cursor:pointer;box-shadow:0 20px 40px -20px rgba(5,20,60,.6);opacity:0;transform:translateY(20px);transition:opacity .6s 1.6s,transform .7s cubic-bezier(.2,.8,.2,1) 1.6s}
@@ -1316,6 +1316,8 @@ svg [data-step],.nv-row[data-step],.tcol[data-step],.net[data-step],.rain[data-s
 .tt-win .wc span{opacity:0}
 .tt-win.on .wc span{animation:tvChip .55s cubic-bezier(.34,1.55,.5,1) both}
 .tt-win.on .wc span:nth-child(1){animation-delay:.95s}.tt-win.on .wc span:nth-child(2){animation-delay:1.1s}
+.tt-win.on .wc span:nth-child(3){animation-delay:1.25s}
+.tt-win .wc span{font-size:19px;padding:8px 14px}
 /* notas, ajuda, auto */
 #notes{position:fixed;left:0;right:0;bottom:0;max-height:42vh;overflow:auto;background:rgba(4,12,38,.95);color:#e8f1ff;padding:22px 32px 26px;font:500 18px/1.55 var(--body);z-index:50;transform:translateY(100%);transition:transform .35s;border-top:3px solid var(--sky)}
 body.show-notes #notes{transform:none}
@@ -2148,34 +2150,34 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
         <div class="tc-hero h2"><span class="tc-n">2</span>
           <div class="tv-like"><span class="lk"><svg class="i"><use href="#heart"/></svg></span></div>
           <span class="tc-stamp">MATCH</span></div>
-        <div class="tc-info"><small>Etapa 2</small><b>Match</b><p>Leia as descrições e dê like nos perfis que mais combinam com o evento.</p></div>
+        <div class="tc-info"><small>Etapa 2</small><b>Match</b><p>Dê like nos perfis que combinam com o evento. Like em contato desatualizado custa −50.</p></div>
         <div class="tc-act"><span class="x"><svg class="i"><use href="#x"/></svg></span><span class="h"><svg class="i"><use href="#heart"/></svg></span></div>
       </div>
       <div class="tc" data-step="4" style="--rot:2.5deg">
         <div class="tc-hero h3"><span class="tc-n">3</span>
           <div class="tv-chat"><span class="b1"></span><div class="o4"><span>A</span><span class="ok">B</span><span>C</span><span>D</span></div></div>
           <span class="tc-stamp">CONVERSA</span></div>
-        <div class="tc-info"><small>Etapa 3</small><b>Conversa</b><p>Converse com um match e escolha a resposta certa entre 4 opções para convencê-lo a ir ao evento.</p></div>
+        <div class="tc-info"><small>Etapa 3</small><b>Conversa</b><p>Converse com um match e escolha a melhor resposta entre 4 opções. Aqui, cada acerto vale 200.</p></div>
         <div class="tc-act"><span class="x"><svg class="i"><use href="#x"/></svg></span><span class="h"><svg class="i"><use href="#heart"/></svg></span></div>
       </div>
     </div>
     <div class="tt-win" data-step="5">
       <div class="podium"><span class="p2">2</span><span class="p1">1</span><span class="p3">3</span></div>
-      <div class="wt"><b>Ganham as 3 pessoas que acertarem mais e mais rápido.</b>
-        <div class="wc"><span><svg class="i"><use href="#check"/></svg>mais acertos</span><span><svg class="i"><use href="#timer"/></svg>menos tempo</span></div></div>
+      <div class="wt"><b>Ganham as 3 maiores pontuações.</b>
+        <div class="wc"><span><svg class="i"><use href="#check"/></svg>acerto: 100</span><span><svg class="i"><use href="#chat"/></svg>chat: 200</span><span><svg class="i"><use href="#timer"/></svg>empate: menos tempo</span></div></div>
     </div>
     <div class="tt-alert" data-step="6" data-a="pop">
       <span class="ai" aria-hidden="true">💔</span>
-      <div><b>Atenção: perfil imperdível!</b><span>Na etapa Match, existe um perfil altamente qualificado que não pode ser deixado passar. Se deixar, é <em>Game Over</em>.</span></div>
+      <div><b>Atenção: perfil imperdível!</b><span>Na etapa Match, há um perfil altamente qualificado. Se deixar passar, é <em>Game Over</em>. Se der super like nele, ganha <em>+200</em>.</span></div>
     </div>
     <div class="notes">
       <p class="cue">Clique 1: como acessar. Cliques 2, 3 e 4: cada etapa entra como um perfil deslizando, e os itens dela ganham vida (o perfil e os filtros, o like, a conversa com a resposta certa escolhida). Clique 5: quem ganha. Clique 6: o alerta de Game Over.</p>
       <p>"Antes de jogar, as regras. Vocês vão ler o QR Code e jogar direto pelo celular. A dinâmica dura, em média, três minutos."</p>
       <p>"Primeira etapa, o perfil: vocês criam o seu perfil e filtram as informações de acordo com o objetivo do evento."</p>
-      <p>"Segunda etapa, o match: leiam as descrições e deem like nos perfis que mais combinam com o evento."</p>
-      <p>"Terceira etapa, a conversa: vocês conversam com um dos seus matches e escolhem a resposta certa entre quatro opções para convencê-lo a comparecer ao evento."</p>
-      <p>"Ganham as três pessoas que acertarem mais e mais rápido."</p>
-      <p>"E atenção: na etapa do match existe um perfil altamente qualificado que vocês não podem deixar passar. Se deixarem, é game over! Prontos? Na próxima tela está o QR Code."</p>
+      <p>"Segunda etapa, o match: leiam as descrições e deem like nos perfis que mais combinam com o evento. Cuidado com contato desatualizado: like nele tira 50 pontos."</p>
+      <p>"Terceira etapa, a conversa: vocês conversam com um dos seus matches e escolhem a melhor resposta entre quatro opções para convencê-lo a comparecer ao evento. Aqui cada acerto vale o dobro: 200 pontos."</p>
+      <p>"Ganham as três maiores pontuações. Filtros e perfis valem 100 pontos por acerto, e o chat vale 200. Se empatar, vence quem decidiu mais rápido: o relógio só corre enquanto vocês decidem, então podem ler as explicações com calma."</p>
+      <p>"E atenção: na etapa do match existe um perfil altamente qualificado que vocês não podem deixar passar. Se deixarem, é game over! E cada um tem um único super like: quem usar nesse perfil ganha 200 pontos de bônus. Prontos? Na próxima tela está o QR Code."</p>
     </div>
   </section>
 
