@@ -1461,7 +1461,9 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
 /* 5) final: chuva de likes */
 .rain .drop{position:absolute;top:-150px;width:var(--s);height:var(--s);opacity:0;will-change:transform}
 .rain.on .drop{animation:likeFall var(--dur) linear var(--dl) infinite}
-.rain .drop svg{position:static;bottom:auto;display:block;width:100%;height:100%;opacity:1;animation:likeSway var(--sdur) ease-in-out var(--dl) infinite alternate;filter:drop-shadow(0 8px 14px rgba(5,20,60,.28))}
+.rain .drop svg{position:static;bottom:auto;display:block;width:100%;height:100%;opacity:1;animation:likeSway var(--sdur) ease-in-out var(--dl) infinite alternate}
+/* a chuva some quase toda atrás dos textos, no meio da tela, e aparece mais nas bordas */
+.s-fin .rain{-webkit-mask-image:radial-gradient(ellipse 58% 62% at 50% 50%,rgba(0,0,0,.12) 0%,rgba(0,0,0,.22) 55%,#000 100%);mask-image:radial-gradient(ellipse 58% 62% at 50% 50%,rgba(0,0,0,.12) 0%,rgba(0,0,0,.22) 55%,#000 100%)}
 @keyframes likeFall{0%{transform:translateY(0);opacity:0}7%{opacity:var(--op)}90%{opacity:var(--op)}100%{transform:translateY(1340px);opacity:0}}
 @keyframes likeSway{from{transform:translateX(calc(var(--sw) * -1)) rotate(calc(var(--rot) * -1)) scale(.96)}to{transform:translateX(var(--sw)) rotate(var(--rot)) scale(1.04)}}
 .fin-c img{filter:brightness(0) invert(1) drop-shadow(0 8px 26px rgba(5,20,60,.45))}
@@ -2375,10 +2377,11 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
   }
   (function(){
     rain.innerHTML='';
-    const C={thumb:['#ffffff','#8fdcff','#5fd0ff','#bfeeff','#ffffff'],heart:['#ff9cc0','#ffffff','#ff6fa8']};
-    for(let k=0;k<72;k++){
+    /* só tons de azul da identidade, bem transparentes */
+    const C={thumb:['#8fdcff','#bfeeff','#5fd0ff','#d6f1ff'],heart:['#8fdcff','#bfeeff','#5fd0ff']};
+    for(let k=0;k<60;k++){
       const kind=k%10<7?'thumb':'heart',sz=28+Math.random()*66,d=document.createElement('span');d.className='drop';
-      d.style.cssText=`left:${(-40+Math.random()*1960).toFixed(0)}px;--s:${sz.toFixed(0)}px;--dur:${(4.4+Math.random()*3.8).toFixed(2)}s;--dl:${(Math.random()*3.4).toFixed(2)}s;--sw:${(10+Math.random()*28).toFixed(0)}px;--rot:${(8+Math.random()*24).toFixed(0)}deg;--sdur:${(1+Math.random()*1.4).toFixed(2)}s;--op:${(.6+Math.random()*.38).toFixed(2)}`;
+      d.style.cssText=`left:${(-40+Math.random()*1960).toFixed(0)}px;--s:${sz.toFixed(0)}px;--dur:${(4.4+Math.random()*3.8).toFixed(2)}s;--dl:${(Math.random()*3.4).toFixed(2)}s;--sw:${(10+Math.random()*28).toFixed(0)}px;--rot:${(8+Math.random()*24).toFixed(0)}deg;--sdur:${(1+Math.random()*1.4).toFixed(2)}s;--op:${(.22+Math.random()*.26).toFixed(2)}`;
       d.innerHTML=`<svg viewBox="0 0 24 24" style="fill:${C[kind][k%C[kind].length]}"><use href="#${kind}"/></svg>`;
       rain.appendChild(d);
     }
