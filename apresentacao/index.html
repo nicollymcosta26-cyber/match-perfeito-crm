@@ -1471,6 +1471,42 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
 .fin-ph,.fin-a .dm{text-shadow:0 4px 22px rgba(5,20,60,.55)}
 .fin-a,.fin-ph,.fin-c{z-index:1}
 .fin-c.on .restart{animation:cuteTilt 3.2s ease-in-out 2s infinite}
+
+/* ===== leitura no projetor: textos maiores, mais contraste e nada cortado ===== */
+.map-h{color:var(--brand)}
+.s-nums .sm-k{font-size:22px}
+.plabel div > span{font-size:23px}
+.nsrc{font-size:17px;color:#9fb1d8}
+.station .carla{font-size:22px}
+.tip{font-size:23px}
+.s-types .common{gap:14px;padding:22px 32px;bottom:64px}
+.s-types .common b{font-size:32px}
+.tcard .top small{opacity:1}
+.s-cx .cxc:nth-child(1) .top{background:linear-gradient(135deg,#1c7cbd,#2766cf)}
+.s-cx .cx-note{right:auto;width:1106px;bottom:auto;top:806px}
+.nv-chip{font-size:20px}
+.nv-tx em{font-size:20px;color:#1d6fb8}
+.nv-tx em svg{font-size:21px}
+.fld label{color:#56678a}
+.s-qual > .tip{position:absolute;left:120px;width:740px;top:800px;margin:0}
+.partner span{font-size:23px}
+.tli span{font-size:20px}
+.tli em{font-size:17px}
+.tabs span{font-size:20px}
+.ccli .hd2 small{font-size:20px}
+.s-tut .tt-left{gap:16px}
+.s-tut .access{gap:10px}
+.s-tut .ac{padding:8px 22px 8px 8px}
+.s-tut .ac .aci{width:50px;height:50px;font-size:24px}
+.s-tut .ac b{display:inline;font-size:27px;margin-right:8px}
+.s-tut .ac > span:not(.aci){font:600 22px/1.2 var(--body);color:var(--muted)}
+.tc-info small{font-size:18px;color:var(--brand)}
+.tc-info p{font-size:23px;color:#43557d}
+.tt-win.sc{top:auto;bottom:79px}
+.tw-r{font-size:21px;white-space:normal;line-height:1.15}
+.tw-r .v{font-size:23px;min-width:80px}
+.tw-tie{font-size:20px;white-space:normal}
+.tt-alert{background:linear-gradient(135deg,#e2415a,#b8243c)}
 </style>
 </head>
 <body>
@@ -1907,7 +1943,7 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
       <div class="tcard pcard" data-step="2" style="--rot:0deg;margin-top:-20px"><div class="top"><small>Promocional</small><svg class="i"><use href="#star"/></svg></div><div class="in"><h3>A conquista</h3><p>Apresentar um produto, serviço ou iniciativa e mobilizar o público adequado.</p><div class="verbs"><span>divulgar</span><span>despertar interesse</span><span>converter</span></div></div></div>
       <div class="tcard pcard" data-step="3" style="--rot:4deg"><div class="top"><small>Publicação · periódico</small><svg class="i"><use href="#doc"/></svg></div><div class="in"><h3>O relacionamento sério</h3><p>Fazer o conteúdo chegar a quem realmente pode aproveitá-lo, com frequência.</p><div class="verbs"><span>divulgar</span><span>gerar acessos</span><span>gerar downloads</span></div></div></div>
     </div>
-    <div class="common" data-step="4"><b>Em todos eles, o caminho passa por:</b><span>objetivo</span><span>público qualificado</span><span>planejamento</span><span>comunicação</span><span>mensuração</span></div>
+    <div class="common" data-step="4"><b>Em todos, o caminho passa por:</b><span>objetivo</span><span>público qualificado</span><span>planejamento</span><span>comunicação</span><span>mensuração</span></div>
     <div class="notes">
       <p>"Agora, será que toda campanha é igual? Claro que não! A da Carla, por exemplo, é um evento: o grande encontro."</p>
       <p class="cue">Um clique por campanha: evento, promocional e publicação. Depois, o que elas têm em comum.</p>
@@ -2036,8 +2072,8 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
         <div data-step="3" style="--d:.4s"><svg class="i"><use href="#check"/></svg>Segmentação mais precisa</div>
         <div data-step="3" style="--d:.6s"><svg class="i"><use href="#check"/></svg>Indicadores mais confiáveis</div>
       </div>
-      <div class="tip" data-step="4"><svg class="i"><use href="#bulb"/></svg><span><b>Dica do cupido:</b> soube que um contato mudou de cargo, empresa ou telefone? Atualize o CRM.</span></div>
     </div>
+    <div class="tip" data-step="4"><svg class="i"><use href="#bulb"/></svg><span><b>Dica do cupido:</b> soube que um contato mudou de cargo, empresa ou telefone? Atualize o CRM.</span></div>
     <div class="notes">
       <p class="cue">Marcador no alto: etapa 3, primeira conversa. E ela não saiu como a Carla esperava.</p>
       <p>"A Carla enviou o convite… e o e-mail voltou. Lembram do Roberto? Ele mudou de empresa em 2023, virou diretor e trocou de telefone. No nosso cadastro, ele continuava igual a 2019. Perfil desatualizado não dá match."</p>
@@ -2192,29 +2228,29 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
         <small>Como acessar</small>
         <div class="ac"><span class="aci"><svg class="i"><use href="#qr"/></svg></span><span><b>Leia o QR Code</b>com a câmera do celular</span></div>
         <div class="ac" style="--d:.25s"><span class="aci"><svg class="i"><use href="#mobile"/></svg></span><span><b>Jogue no celular</b>direto no navegador</span></div>
-        <div class="ac" style="--d:.5s"><span class="aci"><svg class="i"><use href="#timer"/></svg></span><span><b>Cerca de 3 minutos</b>de duração, em média</span></div>
+        <div class="ac" style="--d:.5s"><span class="aci"><svg class="i"><use href="#timer"/></svg></span><span><b>Cerca de 5 minutos</b>de duração, em média</span></div>
       </div>
     </div>
     <div class="tt-deck">
       <div class="tc" data-step="2" style="--rot:-2.5deg">
         <div class="tc-hero h1"><span class="tc-n">1</span>
           <div class="tv-pf"><span class="tv-av"><svg class="i"><use href="#person"/></svg></span><div class="tv-ch"><span class="on2"><svg class="i"><use href="#check"/></svg>setor</span><span class="on2"><svg class="i"><use href="#check"/></svg>cargo</span></div></div>
-          <span class="tc-stamp">PERFIL</span></div>
-        <div class="tc-info"><small>Etapa 1</small><b>Perfil</b><p>Crie o seu perfil e filtre as informações de acordo com o objetivo do evento.</p></div>
+          <span class="tc-stamp">FILTROS</span></div>
+        <div class="tc-info"><small>Etapa 1</small><b>Filtros</b><p>Escolha empresa, área e cargo de quem tem tudo a ver com o objetivo do evento.</p></div>
         <div class="tc-act"><span class="x"><svg class="i"><use href="#x"/></svg></span><span class="h"><svg class="i"><use href="#heart"/></svg></span></div>
       </div>
       <div class="tc" data-step="3" style="--rot:0deg">
         <div class="tc-hero h2"><span class="tc-n">2</span>
           <div class="tv-like"><span class="lk"><svg class="i"><use href="#heart"/></svg></span></div>
           <span class="tc-stamp">MATCH</span></div>
-        <div class="tc-info"><small>Etapa 2</small><b>Match</b><p>Dê like nos perfis que combinam com o evento e guarde seu único super like para o mais qualificado.</p></div>
+        <div class="tc-info"><small>Etapa 2</small><b>Perfis</b><p>Dê like nos perfis que combinam com o evento e guarde seu único super like para o mais qualificado.</p></div>
         <div class="tc-act"><span class="x"><svg class="i"><use href="#x"/></svg></span><span class="h"><svg class="i"><use href="#heart"/></svg></span></div>
       </div>
       <div class="tc" data-step="4" style="--rot:2.5deg">
         <div class="tc-hero h3"><span class="tc-n">3</span>
           <div class="tv-chat"><span class="b1"></span><div class="o4"><span>A</span><span class="ok">B</span><span>C</span><span>D</span></div></div>
-          <span class="tc-stamp">CONVERSA</span></div>
-        <div class="tc-info"><small>Etapa 3</small><b>Conversa</b><p>Converse com um match e escolha a melhor resposta entre 4 opções. Aqui, cada acerto vale 200.</p></div>
+          <span class="tc-stamp">CHAT</span></div>
+        <div class="tc-info"><small>Etapa 3</small><b>Chat</b><p>Converse com o seu match e escolha a melhor resposta entre 4 opções. Aqui, cada acerto vale 200.</p></div>
         <div class="tc-act"><span class="x"><svg class="i"><use href="#x"/></svg></span><span class="h"><svg class="i"><use href="#heart"/></svg></span></div>
       </div>
     </div>
@@ -2230,17 +2266,17 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
     </div>
     <div class="tt-alert" data-step="6" data-a="pop">
       <span class="ai" aria-hidden="true">💔</span>
-      <div><b>Atenção: perfil imperdível!</b><span>Na etapa Match, há um perfil altamente qualificado. Se deixar passar, é <em>Game Over</em>. Se der super like nele, ganha <em>+200</em>.</span></div>
+      <div><b>Atenção: perfil imperdível!</b><span>Na etapa dos perfis, há um perfil altamente qualificado. Se deixar passar, é <em>Game Over</em>. Se der super like nele, ganha <em>+200</em>.</span></div>
     </div>
     <div class="notes">
-      <p class="cue">Clique 1: como acessar. Cliques 2, 3 e 4: cada etapa entra como um perfil deslizando, e os itens dela ganham vida (o perfil e os filtros, o like, a conversa com a resposta certa escolhida). Clique 5: a pontuação e quem ganha. Clique 6: o alerta de Game Over e o super like.</p>
-      <p>"Antes de jogar, as regras. Vocês vão ler o QR Code e jogar direto pelo celular. A dinâmica dura, em média, três minutos."</p>
-      <p>"Primeira etapa, o perfil: vocês criam o seu perfil e filtram as informações de acordo com o objetivo do evento."</p>
-      <p>"Segunda etapa, o match: leiam as descrições e deem like nos perfis que mais combinam com o evento. Cuidado com contato desatualizado: like nele tira 50 pontos."</p>
-      <p>"Terceira etapa, a conversa: vocês conversam com um dos seus matches e escolhem a melhor resposta entre quatro opções para convencê-lo a comparecer ao evento. Aqui cada acerto vale o dobro: 200 pontos."</p>
+      <p class="cue">Clique 1: como acessar. Cliques 2, 3 e 4: cada etapa entra como um perfil deslizando, e os itens dela ganham vida (os filtros, o like, o chat com a resposta certa escolhida). Clique 5: a pontuação e quem ganha. Clique 6: o alerta de Game Over e o super like.</p>
+      <p>"Antes de jogar, as regras. Vocês vão ler o QR Code e jogar direto pelo celular. A dinâmica dura, em média, cinco minutos."</p>
+      <p>"Primeira etapa, os filtros: vocês escolhem o tipo de empresa, a área e o cargo de quem tem tudo a ver com o objetivo do evento."</p>
+      <p>"Segunda etapa, os perfis: leiam as descrições e deem like nos perfis que mais combinam com o evento. Cuidado com contato desatualizado: like nele tira 50 pontos."</p>
+      <p>"Terceira etapa, o chat: vocês conversam com o seu match e escolhem a melhor resposta entre quatro opções para convencê-lo a comparecer ao evento. Aqui cada acerto vale o dobro: 200 pontos."</p>
       <p>"Ganham as três maiores pontuações. Filtros e perfis valem 100 pontos por acerto, e cada acerto no chat vale 200. O super like no perfil certo dá mais 200, e like em contato desatualizado tira 50. Se empatar, vence quem decidiu mais rápido: o relógio só corre enquanto vocês decidem, então podem ler as explicações com calma. Só a primeira partida conta."</p>
       <p>"Quando eu encerrar a rodada, vocês vão ver uma contagem regressiva no celular. No zero, vale o que vocês tiverem feito até ali, e o telão revela o pódio."</p>
-      <p>"E atenção: na etapa do match existe um perfil altamente qualificado que vocês não podem deixar passar. Se deixarem, é game over! E cada um tem um único super like: quem usar nesse perfil ganha 200 pontos de bônus. Prontos? Na próxima tela está o QR Code."</p>
+      <p>"E atenção: na etapa dos perfis existe um perfil altamente qualificado que vocês não podem deixar passar. Se deixarem, é game over! E cada um tem um único super like: quem usar nesse perfil ganha 200 pontos de bônus. Prontos? Na próxima tela está o QR Code."</p>
     </div>
   </section>
 
@@ -2252,7 +2288,7 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
       <div class="qsteps">
         <div data-step="1" style="--d:0s"><b>1</b>Abra a câmera do celular</div>
         <div data-step="1" style="--d:.3s"><b>2</b>Aponte para o QR Code</div>
-        <div data-step="1" style="--d:.6s"><b>3</b>Jogue as três etapas: perfil, likes e conversa</div>
+        <div data-step="1" style="--d:.6s"><b>3</b>Jogue as três etapas: filtros, perfis e chat</div>
       </div>
     </div>
     <div class="halo"></div><div class="halo h2"></div>
