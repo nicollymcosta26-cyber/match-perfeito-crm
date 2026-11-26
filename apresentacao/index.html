@@ -1398,7 +1398,7 @@ body.autoplay #auto{display:block}
 .nv-tx em{font:800 17px/1.2 var(--body);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);display:flex;gap:6px;align-items:center;margin-top:2px}
 .nv-tx em svg{font-size:18px}
 .s-qual .tip{margin-top:4px}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}}
+
 
 /* QR em vetor */
 .qrbox .qrsvg{width:590px;height:590px;display:block;margin-bottom:18px}
@@ -1469,8 +1469,9 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
 @keyframes likeSway{from{transform:translateX(calc(var(--sw) * -1)) rotate(calc(var(--rot) * -1)) scale(.96)}to{transform:translateX(var(--sw)) rotate(var(--rot)) scale(1.04)}}
 .fin-c img{filter:brightness(0) invert(1) drop-shadow(0 8px 26px rgba(5,20,60,.45))}
 .fin-c .tg,.fin-c p{text-shadow:0 4px 22px rgba(5,20,60,.5)}
+.fin-ph,.fin-a .dm{text-shadow:0 4px 22px rgba(5,20,60,.55)}
+.fin-a,.fin-ph,.fin-c{z-index:1}
 .fin-c.on .restart{animation:cuteTilt 3.2s ease-in-out 2s infinite}
-@media (prefers-reduced-motion: reduce){.rain.on .drop,.rain .drop svg{animation:none}}
 </style>
 </head>
 <body>
@@ -2265,7 +2266,7 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
 
   <!-- 21 FINAL -->
   <section class="slide bg-match s-fin" data-hud="none" data-act="Final">
-    <div class="rain" data-step="2" data-a="fade" id="rain"></div>
+    <div class="rain" data-step="0" data-a="fade" id="rain"></div>
     <div class="fin-a" data-step="0" data-until="2" data-a="fade">
       <div class="burst" id="finburst"></div>
       <div class="dm">Deu match!</div>
@@ -2687,7 +2688,7 @@ body.zfit #stage{position:relative;left:auto;top:auto;transform:none}
   });
 
   // ===== fofura: coraçõezinhos a cada clique, curtidas na troca de slide e chuva de likes no final =====
-  const REDUCED=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const REDUCED=false; /* projeção: as animações rodam mesmo com "reduzir movimento" ligado no computador */
   const isDark=sl=>/\bbg-(navy|dusk|match)\b/.test(sl.className);
   const CUTE_SKIP=['s-open','s-match','s-fin','s-video'];
   function cutePuff(host,x,y,n,dark,spread=1,big=1){
